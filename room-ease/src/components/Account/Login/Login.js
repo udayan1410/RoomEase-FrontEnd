@@ -1,51 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import RegularButton from "../../inputs/RegularButton";
+import TextInput from "../../inputs/TextInput";
+import * as classes from './login.module.css';
+import axios from 'axios';
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { email: '', password: '' };
     }
     handleEmail = event => {
+
         this.setState({ email: event.target.value });
     };
     handlePassword = event => {
         this.setState({ password: event.target.value });
     };
-    authenticateUser = () => {
-        console.log("asdasd")
-        return alert('Enter emailId or Password')
 
+    authenticateUser = async () => {
+        console.log("Submitted");
+        let loginCredentials = { email: this.state.email, password: this.state.password }
+        let loginStatus = await axios.post('http://10.0.0.70:8080/login', loginCredentials);
+        console.log(loginStatus);
     }
+
     render() {
         return (
-            <form onSubmit={this.authenticateUser}>
-                <h3>Sign In</h3>
+            <div >
+                <h1>RoomEase</h1>
+                <form className={classes.Form}>
+                    <p className={classes.signin}>Sign In</p>
+                    <TextInput hint="Enter Email" type="text" onChange={this.handleEmail} />
+                    <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
 
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input value={this.state.email}
-                        onChange={this.handleEmail} type="email" className="form-control" placeholder="Enter email" />
-                </div>
-
-                <div className="form-group">
-                    <label >Password</label>
-                    <input value={this.state.password}
-                        onChange={this.handlePassword} type="password" className="form-control" placeholder="Enter password" />
-                </div>
-
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-block" >Submit</button>
-                <p className="forgot-password text-right">
-                    <Link to="signup">Create account</Link>
-                </p>
-            </form>
-
+                    <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
+                    <p className="forgot-password text-right">
+                        <Link to="signup">Don't have an account? Signup here</Link>
+                    </p>
+                </form>
+            </div>
         );
     }
 }
