@@ -34,8 +34,6 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 
-
-
 .auth-wrapper {
   display: flex;
   justify-content: center;
