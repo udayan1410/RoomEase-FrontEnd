@@ -4,28 +4,55 @@ import RegularButton from "../../inputs/RegularButton";
 import TextInput from "../../inputs/TextInput";
 import * as classes from './login.module.css';
 import axios from 'axios';
+import { LOGIN_URL } from '../../../constants/ServerRoutes';
 
 export default class Login extends Component {
+
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '' };
+        this.state = {
+            email: '',
+            password: '',
+            error: ''
+        };
     }
-    handleEmail = event => {
 
+    handleEmail = event => {
         this.setState({ email: event.target.value });
     };
     handlePassword = event => {
         this.setState({ password: event.target.value });
     };
 
+    validate = () => {
+        if (this.state.email === '' || this.state.password === '')
+            this.setState({ error: "Email id/ Password cannot be empty" })
+    }
+
     authenticateUser = async () => {
-        console.log("Submitted");
+        this.validate();
+
         let loginCredentials = { email: this.state.email, password: this.state.password }
-        let loginStatus = await axios.post('http://10.0.0.70:8080/login', loginCredentials);
-        console.log(loginStatus);
+        let loginStatus = (await axios.post(LOGIN_URL, loginCredentials)).data;
+
+        let { responseObject, user } = loginStatus;
+
+        if (responseObject.Result === "Success")
+            this.setState({ error: "" })
+
+        else
+            this.setState({ error: responseObject.Error })
+
     }
 
     render() {
+
+        let erorrMessage = null;
+
+        if (this.state.error)
+            erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
+
+
         return (
             <div >
                 <h1>RoomEase</h1>
@@ -35,6 +62,8 @@ export default class Login extends Component {
                     <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
 
                     <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
+
+                    {erorrMessage}
                     <p className="forgot-password text-right">
                         <Link to="signup">Don't have an account? Signup here</Link>
                     </p>
