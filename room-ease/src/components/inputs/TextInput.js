@@ -1,19 +1,23 @@
 //reusable text input
 import React from 'react';
+import * as classes from './textinput.module.css';
+
 const TextInput = props => {
-    
-    return (
-      <div>
-        <input
-          type="text"
-          value={props.value}
-          onChange={event => console.log("value changed!")}
-        />
-      </div>
-    );
-  };
-  
-  export default TextInput;
+
+  return (
+    <div>
+      <input
+        className={classes.Input}
+        type={props.type}
+        value={props.value}
+        onChange={props.onChange}
+        placeholder={props.hint}
+      />
+    </div>
+  );
+};
+
+export default TextInput;
 
 
 
