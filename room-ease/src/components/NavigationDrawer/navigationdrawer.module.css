@@ -1,0 +1,20 @@
+.container{
+    position: fixed;
+    left: 0;
+    top: 68px;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    transition: ease-in-out 0.4s;
+    z-index: 101;
+    text-align: center;
+}
+
+
+.ViewContainer{
+    transform: translate(0);
+}
+
+.HideContainer{
+    transform: translate(-100%);
+}
