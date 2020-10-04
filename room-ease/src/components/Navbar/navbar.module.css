@@ -1,0 +1,39 @@
+.header{
+    max-height: 45px;
+    /* background-color: #1C8EF9; */
+    box-shadow: 1px 2px 5px black;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.hamburger{
+    max-width: 40px;
+    max-height: 35px;    
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.hamburger:hover{
+    transform: scale(1.1);
+}
+
+.title{
+    font-size: 2.4rem;
+    color: white;
+    font-family: cursive;
+    letter-spacing: 5px;
+    cursor: pointer;
+}
+
+.profileIcon{
+    max-width: 40px;
+    max-height: 35px;    
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.profileIcon:hover{
+    transform: scale(1.1);
+}
