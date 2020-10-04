@@ -1,10 +1,11 @@
-export const BASE_URL = "http://10.0.0.70:8080";
+export const BASE_URL = "http://192.168.0.12:8080";
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
 export const SIGNUP_URL = BASE_URL + '/signup';
 
 //ROOM URLS
+export const ROOM_URL =BASE_URL+ 'joinroom';
 export const CREATE_ROOM_URL = BASE_URL + '/room/create';
 export const JOIN_ROOM_URL = BASE_URL + '/room/join';
 export const LEAVE_ROOM_URL = BASE_URL + '/room/leave';
