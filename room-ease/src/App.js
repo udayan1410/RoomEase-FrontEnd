@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import * as classes from './App.module.css';
 import { Route, Switch } from 'react-router-dom'
-import Login from './components/Account/Login/Login';
-import Signup from './components/Account/Signup/Signup';
+import Login from './containers/Account/Login/Login';
+import Signup from './containers/Account/Signup/Signup';
+import JoinRoom from './containers/JoinRoom/JoinRoom'
 import Homepage from './containers/Homepage/Homepage';
 
 class App extends Component {
@@ -13,8 +14,8 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/home" component={Homepage} />
-          <Route path="/" component={Login} />
+          <Route path="/room/join" component={JoinRoom} />
+          <Route path="/" component={Homepage} />
         </Switch>
       </div>
     );

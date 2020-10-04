@@ -1,4 +1,4 @@
-export const BASE_URL = "http://10.0.0.70:8080";
+export const BASE_URL = "http://localhost:8080";
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
