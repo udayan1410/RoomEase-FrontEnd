@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import RegularButton from "../../components/inputs/RegularButton";
-import TextInput from "../../components/inputs/TextInput";
+import RegularButton from "../../inputs/RegularButton";
+import TextInput from "../../inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
-import {JOIN_ROOM_URL} from '../../../constants/ServerRoutes';
+
 export default class JoinRoom extends Component {
     constructor(props) {
         super(props);
@@ -18,11 +18,7 @@ export default class JoinRoom extends Component {
         this.setState({roomName:event.target.value});
     }
     authenticateRoom= ()=>{
-        let loginCredentials = {userID:this.state.userID,roomName: this.state.roomName}
-        console.log(loginCredentials)
-        let loginStatus = (await axios.post(JOIN_ROOM_URL, loginCredentials)).data;
-        console.log(loginStatus)
-        let { Result, Error } = loginStatus;
+
     }
     render(){
         let errorMessage= null;
@@ -32,12 +28,12 @@ export default class JoinRoom extends Component {
         return(
             <div>
                 <h1>RoomEase</h1>
-                <div className={classes.div}>
+                <div>
                     <p> Join Room </p>
                     <TextInput hint="Enter room name" type="text" onChange={this.handleRoomName} ></TextInput>
                     <RegularButton disabled={this.state.roomName} text="Join" onClick={this.authenticateRoom}></RegularButton>
                     <h3> OR</h3>
-                    <RegularButton  text="Creat a room" onClick={this.createRoom}></RegularButton>
+                    <RegularButton text="Creat a room" onClick={this.createRoom}></RegularButton>
                 </div>
             </div>
         );

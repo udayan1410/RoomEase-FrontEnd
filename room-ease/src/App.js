@@ -3,8 +3,7 @@ import * as classes from './App.module.css';
 import { Route, Switch } from 'react-router-dom'
 import Login from './components/Account/Login/Login';
 import Signup from './components/Account/Signup/Signup';
-import Homepage from './containers/Homepage/Homepage';
-import JoinRoom from './components/JoinRoom/JoinRoom';
+import JoinRoom from './components/Account/JoinScreen/JoinRoom';
 class App extends Component {
 
   render() {
@@ -13,8 +12,7 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/joinroom" component={JoinRoom}/>
-          <Route path="/home" component={Homepage} />
+          <Route path="/join" component={JoinRoom}/>
           <Route path="/" component={Login} />
         </Switch>
       </div>

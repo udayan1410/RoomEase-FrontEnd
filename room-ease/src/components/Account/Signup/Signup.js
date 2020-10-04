@@ -32,7 +32,6 @@ export default class SignUp extends Component {
     this.setState({ error: "Email id/ Password cannot be empty" })
   }
   authenticateUser = async () => {
-    let history=useHistory();
     
     try {
       this.validate();
