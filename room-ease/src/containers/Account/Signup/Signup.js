@@ -4,13 +4,12 @@ import RegularButton from "../../../components/inputs/RegularButton";
 import TextInput from "../../../components/inputs/TextInput";
 import * as classes from './signup.module.css';
 import axios from 'axios';
-import { ROOM_URL, SIGNUP_URL } from '../../../constants/ServerRoutes';
+import { SIGNUP_URL } from '../../../constants/ServerRoutes';
 
 
 class SignUp extends Component {
 
   state = {
-    redirect: ROOM_URL,
     email: '',
     userName: '',
     password: '',
@@ -49,7 +48,7 @@ class SignUp extends Component {
 
       if (Result === "Success") {
         this.setState({ error: "Success" })
-
+        this.props.history.goBack();
       }
       else
         this.setState({ error: Error })
