@@ -11,6 +11,7 @@ const RegularButton = props => {
                 type="button"
                 value={props.text}
                 onClick={props.onClick}
+                disabled={props.disabled? props.disabled: false}
             ></input>
         </div>
     );

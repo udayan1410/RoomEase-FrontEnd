@@ -1,51 +1,73 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { email: '', password: '' };
+import RegularButton from "../../../components/inputs/RegularButton";
+import TextInput from "../../../components/inputs/TextInput";
+import * as classes from './login.module.css';
+import axios from 'axios';
+import { LOGIN_URL } from '../../../constants/ServerRoutes';
+
+class Login extends Component {
+
+    state = {
+        email: '',
+        password: '',
+        error: ''
     }
+
     handleEmail = event => {
         this.setState({ email: event.target.value });
     };
     handlePassword = event => {
         this.setState({ password: event.target.value });
     };
-    authenticateUser = () => {
-        console.log("asdasd")
-        return alert('Enter emailId or Password')
+
+    validate = () => {
+        if (this.state.email === '' || this.state.password === '')
+            this.setState({ error: "Email id/ Password cannot be empty" })
+    }
+
+    authenticateUser = async () => {
+        this.validate();
+
+        let loginCredentials = { email: this.state.email, password: this.state.password }
+        let loginStatus = (await axios.post(LOGIN_URL, loginCredentials)).data;
+
+        let { responseObject, user } = loginStatus;
+
+        if (responseObject.Result === "Success")
+            this.setState({ error: "" })
+
+        else
+            this.setState({ error: responseObject.Error })
 
     }
+
     render() {
+
+        let erorrMessage = null;
+
+        if (this.state.error)
+            erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
+
+
         return (
-            <form onSubmit={this.authenticateUser}>
-                <h3>Sign In</h3>
+            <div >
+                <h1>RoomEase</h1>
+                <form className={classes.Form}>
+                    <p className={classes.signin}>Sign In</p>
+                    <TextInput hint="Enter Email" type="text" onChange={this.handleEmail} />
+                    <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
 
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input value={this.state.email}
-                        onChange={this.handleEmail} type="email" className="form-control" placeholder="Enter email" />
-                </div>
+                    <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
 
-                <div className="form-group">
-                    <label >Password</label>
-                    <input value={this.state.password}
-                        onChange={this.handlePassword} type="password" className="form-control" placeholder="Enter password" />
-                </div>
-
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-block" >Submit</button>
-                <p className="forgot-password text-right">
-                    <Link to="signup">Create account</Link>
-                </p>
-            </form>
-
+                    {erorrMessage}
+                    <p className="forgot-password text-right">
+                        <Link to="signup">Don't have an account? Signup here</Link>
+                    </p>
+                </form>
+            </div>
         );
     }
 }
+
+export default Login;
