@@ -1,11 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import RegularButton from "../../../components/inputs/RegularButton";
+import TextInput from "../../../components/inputs/TextInput";
+import * as classes from './signup.module.css';
+import axios from 'axios';
+import { ROOM_URL, SIGNUP_URL } from '../../../constants/ServerRoutes';
 
-export default class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: '', password: '', FirstName: '', LastName: '' };
-  }
+
+class SignUp extends Component {
+
+  state = {
+    redirect: ROOM_URL,
+    email: '',
+    userName: '',
+    password: '',
+    FirstName: '',
+    phoneNumber: '',
+    error: ''
+  };
+
   handleEmail = event => {
     this.setState({ email: event.target.value });
   };
@@ -15,43 +28,65 @@ export default class SignUp extends Component {
   handleFirstName = event => {
     this.setState({ FirstName: event.target.value });
   };
-  handleLastName = event => {
-    this.setState({ LastName: event.target.value });
+  handlephoneNumber = event => {
+    this.setState({ phoneNumber: event.target.value });
   };
+  handleUserName = event => {
+    this.setState({ userName: event.target.value });
+  };
+  validate = () => {
+    if (this.state.email === '' || this.state.FirstName === '' || this.state.phoneNumber === '' || this.state.userName === '' || this.state.password === '')
+      this.setState({ error: "Email id/ Password cannot be empty" })
+  }
+  authenticateUser = async () => {
+
+    try {
+      this.validate();
+
+      let loginCredentials = { userName: this.state.userName, phoneNumber: this.state.phoneNumber, email: this.state.email, password: this.state.password }
+      let loginStatus = (await axios.post(SIGNUP_URL, loginCredentials)).data;
+      let { Result, Error } = loginStatus;
+
+      if (Result === "Success") {
+        this.setState({ error: "Success" })
+
+      }
+      else
+        this.setState({ error: Error })
+    }
+    catch (err) {
+      this.setState({ error: err.message })
+    }
+  }
+
   render() {
+    let erorrMessage = null;
+
+    if (this.state.error)
+      erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
+
     return (
-      <form>
-        <h3>Sign Up</h3>
+      <div >
+        <h1>RoomEase</h1>
+        <form className={classes.Form}>
+          <p className={classes.signup}>Sign Up</p>
+          <TextInput hint="Enter Name" type="text" onChange={this.handleFirstName} />
+          <TextInput hint="Phone Number" type="number" onChange={this.handlephoneNumber} />
+          <TextInput hint="Enter Email" type="email" onChange={this.handleEmail} />
+          <TextInput hint="Enter Username" type="text" onChange={this.handleUserName} />
+          <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
 
-        <div className="form-group">
-          <label>First name</label>
-          <input value={this.state.FirstName}
-            onChange={this.handleFirstName} type="text" className="form-control" placeholder="First name" />
-        </div>
+          <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
 
-        <div className="form-group">
-          <label>Last name</label>
-          <input value={this.state.LastName}
-            onChange={this.handleLastName} type="text" className="form-control" placeholder="Last name" />
-        </div>
+          {erorrMessage}
+          <p className="forgot-password text-right">
+            <Link to="login">Don't have an account? Signup here</Link>
+          </p>
+        </form>
+      </div>
 
-        <div className="form-group">
-          <label>Email address</label>
-          <input value={this.state.email}
-            onChange={this.handleEmail} type="email" className="form-control" placeholder="Enter email" />
-        </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <input value={this.state.password}
-            onChange={this.handlePassword} type="password" className="form-control" placeholder="Enter password" />
-        </div>
-
-        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-        <p className="forgot-password text-right">
-          Already registered <Link to="/login">sign in?</Link>
-        </p>
-      </form>
     );
   }
 }
+
+export default withRouter(SignUp);
