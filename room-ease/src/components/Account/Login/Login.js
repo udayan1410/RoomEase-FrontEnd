@@ -30,19 +30,23 @@ export default class Login extends Component {
     }
 
     authenticateUser = async () => {
-        this.validate();
+        try {
+            this.validate();
 
-        let loginCredentials = { email: this.state.email, password: this.state.password }
-        let loginStatus = (await axios.post(LOGIN_URL, loginCredentials)).data;
+            let loginCredentials = { email: this.state.email, password: this.state.password }
+            let loginStatus = (await axios.post(LOGIN_URL, loginCredentials)).data;
 
-        let { responseObject, user } = loginStatus;
+            let { responseObject, user } = loginStatus;
 
-        if (responseObject.Result === "Success")
-            this.setState({ error: "" })
+            if (responseObject.Result === "Success")
+                this.setState({ error: "" })
 
-        else
-            this.setState({ error: responseObject.Error })
-
+            else
+                this.setState({ error: responseObject.Error })
+        }
+        catch (err) {
+            this.setState({ error: err.message })
+        }
     }
 
     render() {
