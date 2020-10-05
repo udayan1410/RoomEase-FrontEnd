@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import RegularButton from "../../components/inputs/RegularButton";
 import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
@@ -21,9 +20,7 @@ class JoinRoom extends Component {
     }
     authenticateRoom = async () => {
         let loginCredentials = { userID: this.state.userID, roomName: this.state.roomName }
-        console.log(loginCredentials)
         let loginStatus = (await axios.post(JOIN_ROOM_URL, loginCredentials)).data;
-        console.log(loginStatus)
         let { Result, Error } = loginStatus;
     }
     render() {
