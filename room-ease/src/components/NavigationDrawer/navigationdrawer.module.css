@@ -1,10 +1,11 @@
 .container{
     position: fixed;
     left: 0;
-    top: 68px;
+    top: 0px;
     width: 60%;
+    max-width: 450px;
     height: 100%;
-    background-color: white;
+    background-color: rgba(255,255,255);
     transition: ease-in-out 0.4s;
     z-index: 101;
     text-align: center;
@@ -18,3 +19,36 @@
 .HideContainer{
     transform: translate(-100%);
 }
+
+.list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;    
+    margin: 0;
+    padding: 0;
+    border-top:1px solid black ;
+    margin: 20px;
+}
+
+.listItem{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    cursor: pointer;    
+}
+
+.listItem:hover{
+    background-color: rgba(0,0,0,10%);
+}
+
+.image{
+    width: 40px;
+    height: 40px;
+}
+
+.items{
+    margin-left: 15px;
+}
+
+
+
