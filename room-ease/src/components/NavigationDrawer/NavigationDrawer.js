@@ -4,6 +4,7 @@ import roomImage from '../../assets/room.png'
 import notesImage from '../../assets/notes.png'
 import splitMoneyImage from '../../assets/split_money.png'
 import inviteImage from '../../assets/invite.png'
+import { Link } from 'react-router-dom'
 
 const NavigationDrawer = props => {
 
@@ -18,19 +19,23 @@ const NavigationDrawer = props => {
     let menuItems = [
         {
             image: roomImage,
-            text: "My Room"
+            text: "My Room",
+            link: "/"
         },
         {
             image: splitMoneyImage,
-            text: "Split Money"
+            text: "Split Money",
+            link: "/"
         },
         {
             image: notesImage,
-            text: "Notes"
+            text: "Notes",
+            link: "/"
         },
         {
             image: inviteImage,
-            text: "Invite / Join"
+            text: "Invite / Join",
+            link: "/room/join"
         }
     ];
 
@@ -38,13 +43,17 @@ const NavigationDrawer = props => {
         <div className={viewDrawer.join(' ')}>
             <h1>Select an option</h1>
             <ul className={classes.list}>
-                {menuItems.map(item => <li key={item.text} className={classes.listItem}>
-                    <img src={item.image} className={classes.image} />
-                    <p className={classes.items}>{item.text}</p>
-                </li>)}
+                {menuItems.map(item =>
+                    <Link to={item.link} key={item.text} className={classes.Link}>
+                        <li className={classes.listItem}>
+                            <img src={item.image} className={classes.image} />
+                            <p className={classes.items}>{item.text}</p>
+                        </li>
+                    </Link>
+                )}
 
             </ul>
-        </div>
+        </div >
     )
 
 }

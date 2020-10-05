@@ -48,7 +48,8 @@
 
 .items{
     margin-left: 15px;
+    color: rgb(11, 94, 128);
 }
-
-
-
+.Link{
+    text-decoration: none;    
+}
