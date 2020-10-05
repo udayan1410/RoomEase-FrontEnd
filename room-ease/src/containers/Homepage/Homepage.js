@@ -7,8 +7,6 @@ class Homepage extends Component {
         return (
             <Layout>
 
-
-
             </Layout>
         )
     }
