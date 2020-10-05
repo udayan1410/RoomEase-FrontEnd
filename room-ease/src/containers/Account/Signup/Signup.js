@@ -13,7 +13,6 @@ class SignUp extends Component {
     email: '',
     userName: '',
     password: '',
-    FirstName: '',
     phoneNumber: '',
     error: ''
   };
@@ -24,9 +23,6 @@ class SignUp extends Component {
   handlePassword = event => {
     this.setState({ password: event.target.value });
   };
-  handleFirstName = event => {
-    this.setState({ FirstName: event.target.value });
-  };
   handlephoneNumber = event => {
     this.setState({ phoneNumber: event.target.value });
   };
@@ -34,20 +30,21 @@ class SignUp extends Component {
     this.setState({ userName: event.target.value });
   };
   validate = () => {
-    if (this.state.email === '' || this.state.FirstName === '' || this.state.phoneNumber === '' || this.state.userName === '' || this.state.password === '')
-      this.setState({ error: "Email id/ Password cannot be empty" })
+    if (this.state.email === '' || this.state.phoneNumber === '' || this.state.userName === '' || this.state.password === '')
+      return false
+    return true
   }
   authenticateUser = async () => {
 
+    if(this.validate()){
     try {
-      this.validate();
 
       let loginCredentials = { userName: this.state.userName, phoneNumber: this.state.phoneNumber, email: this.state.email, password: this.state.password }
       let loginStatus = (await axios.post(SIGNUP_URL, loginCredentials)).data;
       let { Result, Error } = loginStatus;
-
+      console.log(Result)
       if (Result === "Success") {
-        this.setState({ error: "Success" })
+        this.setState({ error: "" })
         this.props.history.goBack();
       }
       else
@@ -55,6 +52,10 @@ class SignUp extends Component {
     }
     catch (err) {
       this.setState({ error: err.message })
+    }
+    }
+    else{
+      this.setState({ error: "Fields cannot be empty" })
     }
   }
 
@@ -69,17 +70,16 @@ class SignUp extends Component {
         <h1>RoomEase</h1>
         <form className={classes.Form}>
           <p className={classes.signup}>Sign Up</p>
-          <TextInput hint="Enter Name" type="text" onChange={this.handleFirstName} />
-          <TextInput hint="Phone Number" type="number" onChange={this.handlephoneNumber} />
-          <TextInput hint="Enter Email" type="email" onChange={this.handleEmail} />
           <TextInput hint="Enter Username" type="text" onChange={this.handleUserName} />
           <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
-
+          <TextInput hint="Enter Email id" type="email" onChange={this.handleEmail} />
+          <TextInput hint="Enter Phone Number" type="number" onChange={this.handlephoneNumber} />
+         
           <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
 
           {erorrMessage}
           <p className="forgot-password text-right">
-            <Link to="login">Don't have an account? Signup here</Link>
+            <Link to="login">Already a User? Sign In here</Link>
           </p>
         </form>
       </div>

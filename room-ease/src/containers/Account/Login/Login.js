@@ -23,12 +23,12 @@ class Login extends Component {
 
     validate = () => {
         if (this.state.email === '' || this.state.password === '')
-            this.setState({ error: "Email id/ Password cannot be empty" })
+            return false
+        return true
     }
 
     authenticateUser = async () => {
-        this.validate();
-
+        if(this.validate()){
         let loginCredentials = { email: this.state.email, password: this.state.password }
         let loginStatus = (await axios.post(LOGIN_URL, loginCredentials)).data;
 
@@ -39,7 +39,9 @@ class Login extends Component {
 
         else
             this.setState({ error: responseObject.Error })
-
+        }
+        else
+        this.setState({ error: "Email id/ Password cannot be empty" })
     }
 
     render() {
