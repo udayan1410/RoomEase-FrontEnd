@@ -5,6 +5,8 @@ import TextInput from "../../../components/inputs/TextInput";
 import * as classes from './login.module.css';
 import axios from 'axios';
 import { LOGIN_URL } from '../../../constants/ServerRoutes';
+import { ROOM_JOIN_URL, SIGNUP_URL } from '../../../constants/ClientRoutes';
+import ErrorMessage from '../../../components/inputs/ErrorMessage';
 
 class Login extends Component {
 
@@ -34,8 +36,10 @@ class Login extends Component {
 
         let { responseObject, user } = loginStatus;
 
-        if (responseObject.Result === "Success")
+        if (responseObject.Result === "Success") {
+            this.props.history.push(ROOM_JOIN_URL)
             this.setState({ error: "" })
+        }
 
         else
             this.setState({ error: responseObject.Error })
@@ -47,7 +51,7 @@ class Login extends Component {
         let erorrMessage = null;
 
         if (this.state.error)
-            erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
+            erorrMessage = (<ErrorMessage message={this.state.error} />)
 
 
         return (
@@ -62,7 +66,7 @@ class Login extends Component {
 
                     {erorrMessage}
                     <p className="forgot-password text-right">
-                        <Link to="signup">Don't have an account? Signup here</Link>
+                        <Link to={SIGNUP_URL}>Don't have an account? Signup here</Link>
                     </p>
                 </form>
             </div>

@@ -27,12 +27,11 @@ class Layout extends Component {
                 />
 
                 <NavigationDrawer view={this.state.drawerOpen} />
-
                 <Backdrop
                     show={this.state.drawerOpen}
                     onClick={this.drawerStatusHandler}>
-                    {this.props.children}
                 </Backdrop>
+                {this.props.children}
             </Auxillary >
         );
     }
