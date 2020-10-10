@@ -5,6 +5,7 @@ import TextInput from "../../../components/inputs/TextInput";
 import * as classes from './signup.module.css';
 import axios from 'axios';
 import { SIGNUP_URL } from '../../../constants/ServerRoutes';
+import ErrorMessage from "../../../components/inputs/ErrorMessage";
 
 
 class SignUp extends Component {
@@ -71,6 +72,7 @@ class SignUp extends Component {
     let erorrMessage = null;
     let emailError= null;
     if (this.state.error)
+
       erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
     if (this.state.emailerror)
       emailError = (<p className={classes.error}>{this.state.emailerror}</p>)

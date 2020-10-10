@@ -4,14 +4,23 @@ import * as classes from './regularbutton.module.css';
 
 const RegularButton = props => {
 
+    let buttonClasses = [classes.Button];
+
+    if (props.disabled)
+        buttonClasses.push(classes.ButtonDisabled);
+
+    else {
+        buttonClasses.push(classes.ButtonEnabled);
+    }
+
     return (
         <div>
             <input
-                className={classes.Button}
+                className={buttonClasses.join(" ")}
                 type="button"
                 value={props.text}
                 onClick={props.onClick}
-                disabled={props.disabled? props.disabled: false}
+                disabled={props.disabled ? props.disabled : false}
             ></input>
         </div>
     );

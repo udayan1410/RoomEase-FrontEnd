@@ -4,6 +4,13 @@ import hamburgerIcon from '../../assets/drawerToggle.png';
 import profileIcon from '../../assets/profile.png';
 
 const Navbar = props => {
+
+    let profileClasses = [classes.profileIcon];
+
+    if (props.profileMenuview) {
+        profileClasses.push(classes.HighlightProfile);
+    }
+
     return (
         <div className={classes.header}>
             <img
@@ -13,7 +20,12 @@ const Navbar = props => {
                 onClick={props.onDrawerClick}
             ></img>
             <p className={classes.title}>RoomEase</p>
-            <img className={classes.profileIcon} src={profileIcon} alt={"profile"}></img>
+            <img
+                className={profileClasses.join(' ')}
+                src={profileIcon}
+                alt={"profile"}
+                onClick={props.onProfileClick}
+            ></img>
         </div>
     )
 }

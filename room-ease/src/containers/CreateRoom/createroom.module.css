@@ -1,0 +1,9 @@
+.Form{
+    background-color: whitesmoke;    
+    margin-top: 10%;        
+    min-width: 450px;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 3px 3px 5px black;   
+    border-radius: 5px;
+}

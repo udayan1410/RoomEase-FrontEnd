@@ -1,8 +1,18 @@
+.Container{
+    margin: 10px;
+}
+
 .Input{
     width: 300px;
-    height: 40px;
+    height: 30px;
     font-size: 1.1rem;
     margin: 10px;
     padding-left: 15px;
+    padding: 10px;
     border: 1px solid #1C8EF9;
+}
+
+.title{
+    font-size: 1rem;
+    text-align: center;
 }

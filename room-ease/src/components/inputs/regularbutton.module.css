@@ -2,18 +2,32 @@
     width: 320px;
     height: 40px;
     margin: 15px;
-    color: white;
     font-size: 1.2rem;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #1C8EF9;
+    box-shadow: 1px 1px 4px black;
+}
+
+.ButtonEnabled{
+    
     background-color: #1C8EF9;
     cursor: pointer;
     transition-duration: 0.3s;
-    transition-timing-function: linear;
-    border: 1px solid white;
+    transition-timing-function: linear;    
 }
 
-.Button:hover{
+.ButtonEnabled:hover{
     cursor: pointer;
     background-color: white;
     color:#1C8EF9;
     border: 2px solid #1C8EF9;
 }
+
+
+.ButtonDisabled{
+    background-color: gray;
+    cursor:auto;
+    border: 0px;
+}
+

@@ -1,0 +1,26 @@
+.Container{
+    margin-top: 20px;    
+}
+
+.Day{
+    display: inline-block;
+    background-color: #1C8EF9;
+    border-radius: 25%; 
+    padding: 10px;    
+    margin: 20px;        
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition-duration: 0.3s;    
+    transition-timing-function: ease-out;
+    
+}
+
+.DaySelected{
+    background-color:  rgb(14, 47, 78);        
+    transform:rotateY(360deg);
+}
+
+.Day:hover{            
+    background-color: rgb(22, 81, 136);
+}
