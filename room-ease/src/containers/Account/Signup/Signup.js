@@ -14,11 +14,18 @@ class SignUp extends Component {
     userName: '',
     password: '',
     phoneNumber: '',
-    error: ''
+    error: '',
+    emailerror:'',
   };
 
   handleEmail = event => {
-    this.setState({ email: event.target.value });
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (! re.test(event.target.value) ) {
+      this.setState({emailerror:"Enter valid email"})
+    }
+    else
+      this.setState({emailerror:''});
   };
   handlePassword = event => {
     this.setState({ password: event.target.value });
@@ -30,6 +37,7 @@ class SignUp extends Component {
     this.setState({ userName: event.target.value });
   };
   validate = () => {
+
     if (this.state.email === '' || this.state.phoneNumber === '' || this.state.userName === '' || this.state.password === '')
       return false
     return true
@@ -61,10 +69,11 @@ class SignUp extends Component {
 
   render() {
     let erorrMessage = null;
-
+    let emailError= null;
     if (this.state.error)
       erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
-
+    if (this.state.emailerror)
+      emailError = (<p className={classes.error}>{this.state.emailerror}</p>)
     return (
       <div >
         <h1>RoomEase</h1>
@@ -73,10 +82,9 @@ class SignUp extends Component {
           <TextInput hint="Enter Username" type="text" onChange={this.handleUserName} />
           <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
           <TextInput hint="Enter Email id" type="email" onChange={this.handleEmail} />
+          {emailError}
           <TextInput hint="Enter Phone Number" type="number" onChange={this.handlephoneNumber} />
-         
           <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
-
           {erorrMessage}
           <p className="forgot-password text-right">
             <Link to="login">Already a User? Sign In here</Link>
