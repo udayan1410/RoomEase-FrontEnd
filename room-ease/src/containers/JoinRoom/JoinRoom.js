@@ -11,6 +11,7 @@ class JoinRoom extends Component {
         super(props);
         this.state = {
             roomName: '',
+            userID: '',
             error: ''
         };
     }
