@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from '../../hoc/Layout/Layout'
+import { withLayout } from '../../hoc/Layout/withLayout'
 import * as classes from './createroom.module.css';
 import TextInput from '../../components/inputs/TextInput';
 import RegularButton from '../../components/inputs/RegularButton';
@@ -51,15 +51,13 @@ class CreateRoom extends Component {
             errorMessage = (<ErrorMessage message={this.state.error} />)
 
         return (
-            <Layout>
-                <form className={classes.Form}>
-                    <p>Create Room</p>
-                    <TextInput hint="Enter Group Name" onChange={this.roomNameChangedHandler} />
-                    {errorMessage}
-                    <RegularButton onClick={this.createGroupHandler} text="Create Group" disabled={this.state.buttonDisabled} />
-                </form>
-            </Layout>
+            <form className={classes.Form}>
+                <p>Create Room</p>
+                <TextInput hint="Enter Group Name" onChange={this.roomNameChangedHandler} />
+                {errorMessage}
+                <RegularButton onClick={this.createGroupHandler} text="Create Group" disabled={this.state.buttonDisabled} />
+            </form>
         )
     }
 }
-export default CreateRoom;
+export default withLayout(CreateRoom);

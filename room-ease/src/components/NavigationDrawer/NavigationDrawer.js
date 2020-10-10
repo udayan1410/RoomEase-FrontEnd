@@ -46,12 +46,11 @@ const NavigationDrawer = props => {
                 {menuItems.map(item =>
                     <Link to={item.link} key={item.text} className={classes.Link}>
                         <li className={classes.listItem}>
-                            <img src={item.image} className={classes.image} />
+                            <img src={item.image} className={classes.image} alt={item.text} />
                             <p className={classes.items}>{item.text}</p>
                         </li>
                     </Link>
                 )}
-
             </ul>
         </div >
     )

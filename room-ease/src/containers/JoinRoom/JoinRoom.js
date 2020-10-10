@@ -4,7 +4,7 @@ import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
-import Layout from '../../hoc/Layout/Layout'
+import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class JoinRoom extends Component {
             errorMessage = (<p className={classes.error}>{this.state.error}</p>)
 
         return (
-            <Layout>
+            <div>
                 <h1>RoomEase</h1>
                 <div className={classes.div}>
                     <p> Join Room </p>
@@ -38,7 +38,7 @@ class JoinRoom extends Component {
                     <h3> OR</h3>
                     <RegularButton text="Creat a room" onClick={this.createRoom}></RegularButton>
                 </div>
-            </Layout>
+            </div>
         );
 
 
@@ -46,5 +46,5 @@ class JoinRoom extends Component {
 }
 
 
-export default JoinRoom;
+export default withLayout(JoinRoom);
 
