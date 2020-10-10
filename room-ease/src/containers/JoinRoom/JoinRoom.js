@@ -43,7 +43,7 @@ class JoinRoom extends Component {
                     <RegularButton disabled={this.state.roomName? false:true} text="Join" onClick={this.authenticateRoom}></RegularButton>
                     {errorMessage}
                     <h3> OR</h3>
-                    <RegularButton text="Creat a room" onClick={this.createRoom}></RegularButton>
+                    <RegularButton text="Create a room" onClick={this.createRoom}></RegularButton>
                 </div>
             </div>
         );
