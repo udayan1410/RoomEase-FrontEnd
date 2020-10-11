@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
 import { CHECK_AUTH_STATE } from '../../store/Actions/ActionConstants';
 import Axios from 'axios'
+import RegularButton from '../../components/inputs/RegularButton'
 
 import TaskInfoSelect from '../../components/TaskInfoSelect/TaskInfoSelect';
 import TimeInput from '../../components/inputs/TimeInput';
+import MemberSelect from '../../components/inputs/MemberSelect';
 
 class CreateTask extends Component {
 
@@ -20,17 +22,18 @@ class CreateTask extends Component {
                 label: "Time of day",
                 value: "",
             },
-            peopleName: {
+            peopleNames: {
                 label: "Assigned To",
                 value: [],
-                ids: [],
             }
         },
         status: "",
         createdOn: "",
         roomName: null,
+        userID: null,
         members: [],
         error: "",
+        selectedUser: ""
     }
 
 
@@ -38,7 +41,8 @@ class CreateTask extends Component {
         try {
             let url = MEMBERS_OF_ROOM_URL + "?roomname=" + roomName;
             let members = (await Axios.get(url)).data.Members;
-            this.setState({ members })
+            console.log(members);
+            this.setState({ members, selectedUser: members[0].userName })
         } catch (err) {
             this.setState({ error: err.message })
         }
@@ -49,8 +53,12 @@ class CreateTask extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        let newRoomName = prevProps.roomName;
+        let newRoomName = prevProps.roomName ? prevProps.roomName : this.props.roomName;
         let oldRoomName = this.state.roomName;
+
+        if (this.props.userID !== this.state.userID && this.state.userID === null) {
+            this.setState({ userID: this.props.userID })
+        }
 
         if (this.state.roomName === null && oldRoomName !== newRoomName) {
             this.setState({ roomName: newRoomName })
@@ -74,8 +82,53 @@ class CreateTask extends Component {
         }
         columns.daysOfTheWeek = daysOfTheWeek;
 
+
         this.setState({ columns })
 
+    }
+
+    addToList = (userName) => {
+        let columns = { ...this.state.columns };
+        let peopleNames = { ...columns.peopleNames }
+        let value = [...peopleNames.value];
+
+        let user = this.state.members.filter(member => member.userName === userName)[0];
+        value.push(user);
+
+        peopleNames.value = value;
+        columns.peopleNames = peopleNames;
+
+        let members = [...this.state.members];
+        members = members.filter(member => member.userName !== userName);
+
+        let selectedUser = members.length > 0 ? members[0].userName : new String("");
+
+        this.setState({ columns, members, selectedUser });
+    }
+
+    removeFromList = (userName) => {
+        let columns = { ...this.state.columns };
+        let peopleNames = { ...columns.peopleNames }
+        let value = [...peopleNames.value];
+
+
+        let user = value.filter(member => member.userName === userName)[0];
+
+        value = value.filter(member => member.userName !== userName);
+        peopleNames.value = value;
+        columns.peopleNames = peopleNames;
+
+        let members = [...this.state.members];
+        members.push(user);
+
+        let selectedUser = members[0].userName;
+
+        this.setState({ columns, members, selectedUser });
+    }
+
+    selectUserFromDropdown = (event) => {
+        let selectedUser = event.target.value
+        this.setState({ selectedUser })
     }
 
     render() {
@@ -86,6 +139,15 @@ class CreateTask extends Component {
                 <TextInput onChange={this.taskNameChangedHandler} type="textarea" hint="Comments" />
                 <TaskInfoSelect days={this.state.columns.daysOfTheWeek} daySelected={this.daySelected} />
                 <TimeInput />
+                <MemberSelect
+                    potentialUsers={this.state.members}
+                    addToList={this.addToList}
+                    addedUsers={this.state.columns.peopleNames.value}
+                    selectedUser={this.state.selectedUser}
+                    selectUserFromDropdown={this.selectUserFromDropdown}
+                    removeFromList={this.removeFromList}
+                ></MemberSelect>
+                <RegularButton text={"Submit"} />
             </div>
         )
     }
@@ -94,7 +156,8 @@ class CreateTask extends Component {
 
 let mapStateToProps = state => {
     return {
-        roomName: state.roomName
+        roomName: state.roomName,
+        userID: state.userID
     }
 }
 

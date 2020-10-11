@@ -19,14 +19,14 @@ class JoinRoom extends Component {
         this.setState({ roomName: event.target.value });
     }
     authenticateRoom = async () => {
-        console.log("roomname: ",this.state.roomName)
+        console.log("roomname: ", this.state.roomName)
         let loginCredentials = { userID: '5f79657944f5f348ac09d781', roomName: this.state.roomName }
         let loginStatus = (await axios.post(JOIN_ROOM_URL, loginCredentials)).data;
-        if(loginStatus.Result==='Success')
-            this.setState({error:'Added to room'})
+        if (loginStatus.Result === 'Success')
+            this.setState({ error: 'Added to room' })
         else
-            this.setState({error:loginStatus.Error})
-        console.log("login",loginStatus)
+            this.setState({ error: loginStatus.Error })
+        console.log("login", loginStatus)
         let { Result, Error } = loginStatus;
     }
     render() {
@@ -40,7 +40,7 @@ class JoinRoom extends Component {
                 <div className={classes.div}>
                     <p> Join Room </p>
                     <TextInput hint="Enter room name" type="text" onChange={this.handleRoomName} ></TextInput>
-                    <RegularButton disabled={this.state.roomName? false:true} text="Join" onClick={this.authenticateRoom}></RegularButton>
+                    <RegularButton disabled={this.state.roomName ? false : true} text="Join" onClick={this.authenticateRoom}></RegularButton>
                     {errorMessage}
                     <h3> OR</h3>
                     <RegularButton text="Create a room" onClick={this.createRoom}></RegularButton>
@@ -51,6 +51,7 @@ class JoinRoom extends Component {
 
     }
 }
+
 
 
 export default withLayout(JoinRoom);
