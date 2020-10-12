@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import * as classes from './createtask.module.css'
 import TextInput from '../../components/inputs/TextInput';
 import { connect } from 'react-redux';
-import { MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
+import { MEMBERS_OF_ROOM_URL, TASK_CREATE_URL } from '../../constants/ServerRoutes';
 import { CHECK_AUTH_STATE } from '../../store/Actions/ActionConstants';
 import Axios from 'axios'
 import RegularButton from '../../components/inputs/RegularButton'
-
 import TaskInfoSelect from '../../components/TaskInfoSelect/TaskInfoSelect';
 import TimeInput from '../../components/inputs/TimeInput';
 import MemberSelect from '../../components/inputs/MemberSelect';
@@ -18,22 +17,17 @@ class CreateTask extends Component {
         comments: "",
         columns: {
             daysOfTheWeek: [],
-            timeOfDay: {
-                label: "Time of day",
-                value: "",
-            },
-            peopleNames: {
-                label: "Assigned To",
-                value: [],
-            }
+            timeOfDay: "",
+            users: [],
         },
-        status: "",
-        createdOn: "",
         roomName: null,
         userID: null,
         members: [],
         error: "",
-        selectedUser: ""
+        selectedUser: "",
+        timePeriod: "AM",
+        hours: "",
+        minutes: "",
     }
 
 
@@ -41,7 +35,7 @@ class CreateTask extends Component {
         try {
             let url = MEMBERS_OF_ROOM_URL + "?roomname=" + roomName;
             let members = (await Axios.get(url)).data.Members;
-            console.log(members);
+            // console.log(members);
             this.setState({ members, selectedUser: members[0].userName })
         } catch (err) {
             this.setState({ error: err.message })
@@ -66,8 +60,14 @@ class CreateTask extends Component {
         }
     }
 
-    taskNameChangedHandler = (day) => {
+    taskNameChangedHandler = (event, type) => {
+        let value = event.target.value;
+        this.setState({ taskName: value })
+    }
 
+    taskCommentsChangedHandler = (event, type) => {
+        let value = event.target.value;
+        this.setState({ comments: value })
     }
 
     daySelected = (day) => {
@@ -87,36 +87,46 @@ class CreateTask extends Component {
 
     }
 
+    changedTime = (event, type) => {
+        let time = parseInt(event.target.value);
+        if (type === "hours") {
+            this.setState({ hours: time })
+        }
+        else {
+            this.setState({ minutes: time })
+        }
+    }
+
+    changedtimePeriod = (event) => {
+        this.setState({ timePeriod: event.target.value })
+    }
+
     addToList = (userName) => {
         let columns = { ...this.state.columns };
-        let peopleNames = { ...columns.peopleNames }
-        let value = [...peopleNames.value];
+        let users = [...columns.users];
 
         let user = this.state.members.filter(member => member.userName === userName)[0];
-        value.push(user);
+        users.push(user);
 
-        peopleNames.value = value;
-        columns.peopleNames = peopleNames;
+        columns.users = users;
 
         let members = [...this.state.members];
         members = members.filter(member => member.userName !== userName);
 
-        let selectedUser = members.length > 0 ? members[0].userName : new String("");
+        let selectedUser = members.length > 0 ? members[0].userName : "";
 
         this.setState({ columns, members, selectedUser });
     }
 
     removeFromList = (userName) => {
         let columns = { ...this.state.columns };
-        let peopleNames = { ...columns.peopleNames }
-        let value = [...peopleNames.value];
+        let users = [...columns.users];
 
+        let user = users.filter(member => member.userName === userName)[0];
 
-        let user = value.filter(member => member.userName === userName)[0];
+        users = users.filter(member => member.userName !== userName);
 
-        value = value.filter(member => member.userName !== userName);
-        peopleNames.value = value;
-        columns.peopleNames = peopleNames;
+        columns.users = users;
 
         let members = [...this.state.members];
         members.push(user);
@@ -131,23 +141,57 @@ class CreateTask extends Component {
         this.setState({ selectedUser })
     }
 
+    submittedCreateTask = async () => {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let createdOn = new Date();
+        createdOn = `${monthNames[createdOn.getMonth()]} ${createdOn.getDate()} ${createdOn.getFullYear()}`;
+        let columns = {};
+        columns.daysOfTheWeek = this.state.columns.daysOfTheWeek;
+        columns.users = this.state.columns.users;
+        columns.timeOfDay = `${this.state.hours}:${this.state.minutes}${this.state.timePeriod}`
+
+        let taskModel = {
+            createdOn: createdOn,
+            taskName: this.state.taskName,
+            comments: this.state.comments,
+            columns: columns,
+            roomName: this.state.roomName
+        };
+
+
+        let taskCreationStatus = (await Axios.post(TASK_CREATE_URL, taskModel)).data;
+        console.log(taskCreationStatus);
+
+    }
+
     render() {
+
+
         return (
             <div className={classes.Form} >
                 <h2>Create Task</h2>
                 <TextInput onChange={this.taskNameChangedHandler} type="text" hint="Task Name" />
-                <TextInput onChange={this.taskNameChangedHandler} type="textarea" hint="Comments" />
+                <TextInput onChange={this.taskCommentsChangedHandler} type="textarea" hint="Comments" />
                 <TaskInfoSelect days={this.state.columns.daysOfTheWeek} daySelected={this.daySelected} />
-                <TimeInput />
+                <TimeInput
+                    changedTime={this.changedTime}
+                    timePeriod={this.state.timePeriod}
+                    changedtimePeriod={this.changedtimePeriod}
+                    hours={`${this.state.hours}`}
+                    minutes={`${this.state.minutes}`}
+                />
                 <MemberSelect
                     potentialUsers={this.state.members}
                     addToList={this.addToList}
-                    addedUsers={this.state.columns.peopleNames.value}
+                    addedUsers={this.state.columns.users}
                     selectedUser={this.state.selectedUser}
                     selectUserFromDropdown={this.selectUserFromDropdown}
                     removeFromList={this.removeFromList}
                 ></MemberSelect>
-                <RegularButton text={"Submit"} />
+                <RegularButton text={"Submit"} onClick={this.submittedCreateTask} />
             </div>
         )
     }
