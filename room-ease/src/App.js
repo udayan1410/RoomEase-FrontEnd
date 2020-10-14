@@ -6,7 +6,7 @@ import Signup from './containers/Account/Signup/Signup';
 import JoinRoom from './containers/JoinRoom/JoinRoom'
 import Homepage from './containers/Homepage/Homepage';
 import Layout from './hoc/Layout/Layout';
-
+import UserProfile from './containers/UserProfile/UserProfile';
 
 class App extends Component {
 
@@ -16,6 +16,7 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/profile" component={UserProfile}/>
           <Layout>
             <Route path="/room/join" component={JoinRoom} />
           </Layout>
