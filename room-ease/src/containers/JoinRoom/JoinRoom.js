@@ -4,7 +4,7 @@ import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
-
+import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
     constructor(props) {
@@ -53,5 +53,5 @@ class JoinRoom extends Component {
 }
 
 
-export default JoinRoom;
+export default withLayout(JoinRoom);
 

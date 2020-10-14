@@ -1,0 +1,53 @@
+.Menu{
+    position: absolute;
+    top:0;
+    right: 0;    
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    transition-duration: 0.2s;
+    border: 1px solid black;
+    padding: 5px; 
+    margin-right: 5px;
+}
+
+.MenuHide{
+    height: 0px;
+    top:65px;
+    overflow: hidden;
+    border: 0;
+    padding: 0px; 
+}
+
+.MenuShow{
+    transform:translateY(65px)
+}
+
+.list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;    
+    margin: 0;
+    padding: 0;    
+}
+
+.listItem{
+    display: flex;
+    align-items: center;    
+    cursor: pointer;    
+}
+
+.listItem:hover{
+    background-color: rgba(0,0,0,10%);
+}
+
+.image{
+    width: 30px;
+    height: 30px;
+}
+
+.items{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(11, 94, 128);
+}
