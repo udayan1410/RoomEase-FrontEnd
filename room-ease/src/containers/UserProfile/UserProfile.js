@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import RegularButton from "../../components/inputs/RegularButton";
 import TextInput from "../../components/inputs/TextInput";
+import { Link, withRouter } from "react-router-dom";
+
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
 import { USER_PROFILE_URL,MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
@@ -39,7 +41,7 @@ class UserProfile extends Component{
         return(
         <div>
 
-            
+            <h1>Hiass</h1>
             {this.hasRoom}
             
         </div>
@@ -54,6 +56,6 @@ class UserProfile extends Component{
 
 }
 
-export default UserProfile;
+export default withRouter(UserProfile);
 
 

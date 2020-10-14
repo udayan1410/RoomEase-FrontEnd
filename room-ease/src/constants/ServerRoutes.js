@@ -17,4 +17,4 @@ export const TASK_CREATE_URL = BASE_URL + '/task/create';
 
 
 // Profile url
-export const USER_PROFILE_URL =BASE_URL +'/profile/X';
+export const USER_PROFILE_URL =BASE_URL +'/profile';
