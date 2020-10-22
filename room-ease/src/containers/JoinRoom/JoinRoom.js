@@ -4,6 +4,7 @@ import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
+import { ROOM_CREATE_URL } from '../../constants/ClientRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
@@ -27,8 +28,13 @@ class JoinRoom extends Component {
         else
             this.setState({ error: loginStatus.Error })
         console.log("login", loginStatus)
-        let { Result, Error } = loginStatus;
+        // let { Result, Error } = loginStatus;
     }
+
+    createRoom = () => {
+        this.props.history.push(ROOM_CREATE_URL);
+    }
+
     render() {
         let errorMessage = null;
         if (this.state.error)

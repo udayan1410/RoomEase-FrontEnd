@@ -1,13 +1,25 @@
 .Container{
-    display: flex;    
-    width: 80%;
-    background-color: red;
+    display: flex;
+    text-align: center;        
+    justify-content: center;    
+    flex-wrap: wrap;    
 }
 
-.Tab{
-    display: inline-block;
+.Tab{    
     border: 1px solid rgba(26, 94, 99, 1);    
     width: 100px;
-    padding: 15px;
+    padding: 20px 35px;
     cursor: pointer;        
+    background-color: white;
+    text-decoration: none;
+    color: rgb(26, 94, 99); 
+    font-weight: bold;    
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.Tab:hover{
+    background-color: rgb(26, 76, 99); 
+    color: white;
+    transform: translateY(-5px);
 }

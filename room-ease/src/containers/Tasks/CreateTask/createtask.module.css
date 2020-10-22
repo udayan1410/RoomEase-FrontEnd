@@ -9,3 +9,9 @@
     width: auto;
     padding: 0 5% 5% 5%;
 }
+
+@media (max-width: 1000px) {
+    .Form {      
+        max-width: 80%;        
+    }
+  }

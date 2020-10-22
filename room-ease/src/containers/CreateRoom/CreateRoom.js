@@ -6,10 +6,9 @@ import RegularButton from '../../components/inputs/RegularButton';
 import Axios from 'axios';
 import { CREATE_ROOM_URL } from '../../constants/ServerRoutes';
 import ErrorMessage from '../../components/inputs/ErrorMessage';
+import { connect } from 'react-redux';
 
 class CreateRoom extends Component {
-
-    userID = "5f760afabf88273c048bbd01";
 
     state = {
         roomName: null,
@@ -28,7 +27,7 @@ class CreateRoom extends Component {
 
     createGroupHandler = async () => {
         let RoomInfo = {
-            userID: this.userID,
+            userID: this.props.userID,
             roomName: this.state.roomName
         }
 
@@ -60,4 +59,12 @@ class CreateRoom extends Component {
         )
     }
 }
-export default withLayout(CreateRoom);
+
+const mapStateToProps = state => {
+    return {
+        userID: state.userID,
+    }
+}
+
+
+export default connect(mapStateToProps, null)(withLayout(CreateRoom));

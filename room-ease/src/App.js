@@ -6,7 +6,7 @@ import Signup from './containers/Account/Signup/Signup';
 import JoinRoom from './containers/JoinRoom/JoinRoom'
 import CreateRoom from './containers/CreateRoom/CreateRoom'
 import Homepage from './containers/Homepage/Homepage'
-import CreateTask from './containers/CreateTask/CreateTask'
+import CreateTask from './containers/Tasks/CreateTask/CreateTask'
 import { LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL } from './constants/ClientRoutes';
 
 class App extends Component {
@@ -22,6 +22,8 @@ class App extends Component {
           {/* Rooms */}
           <Route path={ROOM_JOIN_URL} component={JoinRoom} />
           <Route path={ROOM_CREATE_URL} component={CreateRoom} />
+
+          {/* HomePAge */}
           <Route path={ROOM_HOMEPAGE} component={Homepage} />
 
           <Route path={TASK_CREATE_URL} component={CreateTask} />
