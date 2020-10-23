@@ -26,7 +26,7 @@ class Activity extends Component {
 
         return (
             <div className={classes.Container}>
-                <h1>{this.state.feed.length == 1 ? "Actvitiy" : "Activities"} of room {this.state.roomName}</h1>
+                <h1>{this.state.feed.length === 1 ? "Actvitiy" : "Activities"} of room {this.state.roomName}</h1>
                 <Table headers={this.headers} tableData={this.state.feed}></Table>
             </div>
         )

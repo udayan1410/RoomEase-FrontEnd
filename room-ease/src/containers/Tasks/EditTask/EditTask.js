@@ -194,8 +194,6 @@ class EditTask extends Component {
 
     render() {
 
-        console.log(this.state);
-
         return (
             <div className={classes.Form}>
                 <h2 style={{ border: `5px solid ${this.state.color}` }}>Update Task : {this.state.taskName}</h2>

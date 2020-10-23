@@ -23,6 +23,8 @@ const TextInput = props => {
       value={props.value}
       onChange={(event) => props.onChange(event, "text")}
       placeholder={props.hint}
+      onKeyDown={props.onKeyDown}
+      ref={props.reference}
     />)
   }
 

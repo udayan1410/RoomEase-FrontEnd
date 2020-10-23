@@ -7,6 +7,7 @@ import Axios from 'axios';
 import { CREATE_ROOM_URL } from '../../constants/ServerRoutes';
 import ErrorMessage from '../../components/inputs/ErrorMessage';
 import { connect } from 'react-redux';
+import { ROOM_URL, ACTIVITY_URL } from '../../constants/ClientRoutes';
 
 class CreateRoom extends Component {
 
@@ -33,8 +34,10 @@ class CreateRoom extends Component {
 
         let roomCreateStats = (await Axios.post(CREATE_ROOM_URL, RoomInfo)).data;
         console.log(roomCreateStats);
-        if (roomCreateStats.Result === "Success")
-            console.log("DONEEE");
+        if (roomCreateStats.Result === "Success") {
+            this.props.history.push(`${ROOM_URL}/${this.state.roomName}${ACTIVITY_URL}`)
+        }
+
 
         else {
             let error = roomCreateStats.Error;

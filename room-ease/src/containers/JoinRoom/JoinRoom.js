@@ -4,7 +4,7 @@ import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
-import { ROOM_CREATE_URL } from '../../constants/ClientRoutes';
+import { ROOM_CREATE_URL, ROOM_URL, ACTIVITY_URL } from '../../constants/ClientRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
@@ -21,14 +21,14 @@ class JoinRoom extends Component {
     }
     authenticateRoom = async () => {
         console.log("roomname: ", this.state.roomName)
-        let loginCredentials = { userID: '5f79657944f5f348ac09d781', roomName: this.state.roomName }
+        let loginCredentials = { userID: localStorage.getItem('userID'), roomName: this.state.roomName }
         let loginStatus = (await axios.post(JOIN_ROOM_URL, loginCredentials)).data;
-        if (loginStatus.Result === 'Success')
+        if (loginStatus.Result === 'Success') {
             this.setState({ error: 'Added to room' })
+            this.props.history.push(`${ROOM_URL}/${this.state.roomName}${ACTIVITY_URL}`);
+        }
         else
             this.setState({ error: loginStatus.Error })
-        console.log("login", loginStatus)
-        // let { Result, Error } = loginStatus;
     }
 
     createRoom = () => {

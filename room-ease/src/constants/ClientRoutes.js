@@ -22,3 +22,6 @@ export const ROOM_ONE_TASK_URL = ROOM_HOMEPAGE + "/tasks/:taskid"
 
 //Activity
 export const ACTIVITY_URL = "/activity";
+
+//Chats
+export const CHAT_URL = "/chat";

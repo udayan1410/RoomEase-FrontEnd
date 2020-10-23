@@ -18,3 +18,6 @@ export const TASK_CREATE_URL = BASE_URL + '/task/create';
 
 //Activity
 export const ACTIVITY_URL = BASE_URL + "/room/feed";
+
+//Chat URL
+export const CHAT_URL = BASE_URL + "/room/chat";

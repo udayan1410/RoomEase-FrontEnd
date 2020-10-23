@@ -19,7 +19,7 @@ const Table = ({ headers, tableData }) => {
                     let num = number++;
 
                     let recordClasses = [classes.tableRecord];
-                    if (num % 2 == 0)
+                    if (num % 2 === 0)
                         recordClasses.push(classes.bgColorGray);
                     else
                         recordClasses.push(classes.bgColorWhite);
