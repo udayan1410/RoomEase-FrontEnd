@@ -72,7 +72,6 @@ class SignUp extends Component {
     let erorrMessage = null;
     let emailError= null;
     if (this.state.error)
-
       erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
     if (this.state.emailerror)
       emailError = (<p className={classes.error}>{this.state.emailerror}</p>)

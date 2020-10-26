@@ -14,4 +14,4 @@ export const ROOM_HOMEPAGE = "/room/:roomName"
 export const TASK_URL = "/task";
 export const TASK_CREATE_URL = TASK_URL + "/create";
 
-
+export const USER_PROFILE_URL = "/profile";

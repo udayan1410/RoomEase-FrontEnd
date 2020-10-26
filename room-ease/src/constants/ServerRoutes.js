@@ -14,3 +14,7 @@ export const TASKS_OF_ROOM_URL = BASE_URL + '/room/tasks';
 
 //TASK URLS
 export const TASK_CREATE_URL = BASE_URL + '/task/create';
+
+
+// Profile url
+export const USER_PROFILE_URL =BASE_URL +'/profile';
