@@ -12,6 +12,7 @@
 
 @media (max-width: 1000px) {
     .Form {      
-        max-width: 80%;        
+        min-width: 250px;                
+        max-width: 80%;
     }
   }

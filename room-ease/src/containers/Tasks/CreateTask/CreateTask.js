@@ -42,21 +42,32 @@ class CreateTask extends Component {
         }
     }
 
+    updateRoomName = (prevProps) => {
+
+        let setAndUpdate = (roomName) => {
+            this.setState({ roomName: roomName })
+            this.fetchAndUpdateUsersOfRoom(roomName);
+        }
+
+        if (this.props.roomName != null && this.state.roomName === null)
+            setAndUpdate(this.props.roomName);
+
+        else if (prevProps != null && (prevProps.roomName !== null && this.state.roomName === null))
+            setAndUpdate(prevProps.roomName);
+    }
+
     componentDidMount() {
-        this.props.checkAuthState();
+        // this.props.checkAuthState();
+        this.updateRoomName();
     }
 
     componentDidUpdate(prevProps, prevState) {
+        this.updateRoomName(prevProps);
         let newRoomName = prevProps.roomName ? prevProps.roomName : this.props.roomName;
         let oldRoomName = this.state.roomName;
 
         if (this.props.userID !== this.state.userID && this.state.userID === null) {
             this.setState({ userID: this.props.userID })
-        }
-
-        if (this.state.roomName === null && oldRoomName !== newRoomName) {
-            this.setState({ roomName: newRoomName })
-            this.fetchAndUpdateUsersOfRoom(newRoomName);
         }
     }
 
