@@ -26,7 +26,7 @@ class App extends Component {
           <Route path={ROOM_HOMEPAGE} component={Homepage} />
 
           <Route path={TASK_CREATE_URL} component={CreateTask} />
-          
+
           <Route path={USER_PROFILE_URL} component={UserProfile}/>
           <Route path={BASE_URL} component={Login} />
         </Switch>
