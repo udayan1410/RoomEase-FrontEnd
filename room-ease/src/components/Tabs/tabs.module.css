@@ -21,8 +21,5 @@
 .Tab:hover{
     background-color: rgb(26, 76, 99); 
     color: white;
-    transform: translateY(-5px);
-    display: flex;    
-    width: 80%;
-    background-color: red;
+    transform: translateY(-5px);        
 }

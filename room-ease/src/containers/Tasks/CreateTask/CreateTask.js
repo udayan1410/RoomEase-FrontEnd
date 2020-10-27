@@ -63,8 +63,11 @@ class CreateTask extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         this.updateRoomName(prevProps);
+<<<<<<< HEAD
         let newRoomName = prevProps.roomName ? prevProps.roomName : this.props.roomName;
         let oldRoomName = this.state.roomName;
+=======
+>>>>>>> master
 
         if (this.props.userID !== this.state.userID && this.state.userID === null) {
             this.setState({ userID: this.props.userID })
