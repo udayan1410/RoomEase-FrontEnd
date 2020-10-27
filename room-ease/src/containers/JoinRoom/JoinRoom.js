@@ -5,6 +5,7 @@ import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
 import { ROOM_CREATE_URL, ROOM_URL, ACTIVITY_URL } from '../../constants/ClientRoutes';
+
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
@@ -57,7 +58,6 @@ class JoinRoom extends Component {
 
     }
 }
-
 
 
 export default withLayout(JoinRoom);

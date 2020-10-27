@@ -9,11 +9,14 @@ import { ROOM_ALL_TASKS_URL, ROOM_ONE_TASK_URL, ACTIVITY_URL, CHAT_URL } from '.
 import EditTask from '../../containers/Tasks/EditTask/EditTask';
 import Chat from '../Chat/Chat';
 
+
 class Homepage extends Component {
 
     state = {
         roomName: this.props.match.params.roomName
     }
+
+
 
 
     render() {
@@ -26,6 +29,7 @@ class Homepage extends Component {
                     <Route path={this.props.match.path + ACTIVITY_URL} component={Activity} />
                     <Route path={this.props.match.path + CHAT_URL} component={Chat} />
                 </Switch>
+
             </div>
         )
     }

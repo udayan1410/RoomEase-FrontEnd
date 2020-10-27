@@ -6,10 +6,12 @@ import RegularButton from '../../components/inputs/RegularButton';
 import Axios from 'axios';
 import { CREATE_ROOM_URL } from '../../constants/ServerRoutes';
 import ErrorMessage from '../../components/inputs/ErrorMessage';
+
 import { connect } from 'react-redux';
 import { ROOM_URL, ACTIVITY_URL } from '../../constants/ClientRoutes';
 
 class CreateRoom extends Component {
+
 
     state = {
         roomName: null,
@@ -29,6 +31,7 @@ class CreateRoom extends Component {
     createGroupHandler = async () => {
         let RoomInfo = {
             userID: this.props.userID,
+
             roomName: this.state.roomName
         }
 
@@ -37,7 +40,6 @@ class CreateRoom extends Component {
         if (roomCreateStats.Result === "Success") {
             this.props.history.push(`${ROOM_URL}/${this.state.roomName}${ACTIVITY_URL}`)
         }
-
 
         else {
             let error = roomCreateStats.Error;

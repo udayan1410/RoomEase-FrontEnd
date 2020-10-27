@@ -6,6 +6,7 @@ import * as classes from './login.module.css';
 import axios from 'axios';
 import { LOGIN_URL } from '../../../constants/ServerRoutes';
 import { ROOM_URL, ROOM_JOIN_URL, SIGNUP_URL, ACTIVITY_URL } from '../../../constants/ClientRoutes';
+
 import ErrorMessage from '../../../components/inputs/ErrorMessage';
 import { CHECK_AUTH_STATE, AUTHENTICATE_USER } from '../../../store/Actions/ActionConstants';
 import { connect } from 'react-redux';
@@ -50,7 +51,6 @@ class Login extends Component {
             this.setState({ error: "" }, () => {
                 if (this.props.roomName)
                     this.props.history.push(ROOM_URL + '/' + this.props.roomName + ACTIVITY_URL);
-
                 else
                     this.props.history.push(ROOM_JOIN_URL);
             })

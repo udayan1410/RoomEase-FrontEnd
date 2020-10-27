@@ -21,6 +21,7 @@ const RegularButton = props => {
         buttonClasses.push(classes.ButtonWarning);
     }
 
+
     return (
         <div>
             <input

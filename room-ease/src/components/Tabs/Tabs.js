@@ -1,11 +1,14 @@
 import React from 'react';
+
 import * as classes from './tabs.module.css';
 import { Link } from 'react-router-dom';
 import { ROOM_ALL_TASKS_URL, ACTIVITY_URL, CHAT_URL } from '../../constants/ClientRoutes';
 
+
 const Tabs = props => {
 
     let tabsList = [
+
         { name: "Activity", url: ACTIVITY_URL },
         { name: "Tasks", url: ROOM_ALL_TASKS_URL },
         { name: "Chat", url: CHAT_URL },
@@ -22,6 +25,7 @@ const Tabs = props => {
                 )
             })}
         </div>
+
     )
 }
 

@@ -21,3 +21,7 @@ export const ACTIVITY_URL = BASE_URL + "/room/feed";
 
 //Chat URL
 export const CHAT_URL = BASE_URL + "/room/chat";
+
+// Profile url
+export const USER_PROFILE_URL =BASE_URL +'/profile';
+

@@ -5,7 +5,9 @@
     align-items: center;
     padding: 10px;
     justify-content: space-between;
+
     flex-wrap: nowrap;
+
 }
 
 .hamburger{
