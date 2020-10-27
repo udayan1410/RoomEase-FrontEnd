@@ -195,14 +195,14 @@ class CreateTask extends Component {
                     hours={`${this.state.hours}`}
                     minutes={`${this.state.minutes}`}
                 />
-                {/* <MemberSelect
+                <MemberSelect
                     potentialUsers={this.state.members}
                     addToList={this.addToList}
                     addedUsers={this.state.columns.users}
                     selectedUser={this.state.selectedUser}
                     selectUserFromDropdown={this.selectUserFromDropdown}
                     removeFromList={this.removeFromList}
-                ></MemberSelect> */}
+                ></MemberSelect>
                 <RegularButton text={"Submit"} onClick={this.submittedCreateTask} />
             </div>
         )
