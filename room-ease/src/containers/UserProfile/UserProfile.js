@@ -5,8 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
-import { USER_PROFILE_URL } from '../../constants/ClientRoutes';
-import {MEMBERS_OF_ROOM_URL} from '../../constants/ServerRoutes';
+import {MEMBERS_OF_ROOM_URL,USER_PROFILE_URL} from '../../constants/ServerRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class UserProfile extends Component{
@@ -24,16 +23,18 @@ class UserProfile extends Component{
     }
 
     hasRoom= async ()=>{
-        let userID=12312312
+        let userID="5f7918453c2bc625c03ecb20"
         let roomName=localStorage.getItem('roomName')
         console.log("adasd",userID,roomName)
-        let profileStatus= (await axios.get(MEMBERS_OF_ROOM_URL+"?roomname=SCU")).data;
+        let profileStatus= (await axios.get(USER_PROFILE_URL+"?userID="+userID+"&roomName="+roomName)).data;
         let {Result,Error}= profileStatus
-        console.log("asdasasdasdas",profileStatus.Members)
+        console.log("received data",profileStatus.userInfo)
         this.setState({roomInfo:profileStatus.Members});
         let obj={}
-        obj["userID"]=userID;
-        obj["roomName"]=roomName;
+        obj["Username"]=profileStatus.userInfo.userName;
+        obj["Room Name"]=roomName;
+        obj["Email id"]=profileStatus.userInfo.email;
+        obj["Phone no"]=profileStatus.userInfo.phoneNumber;
         this.setState({userInfo:obj});
         console.log(this.state.roomInfo);
     }
@@ -43,21 +44,40 @@ class UserProfile extends Component{
 
     render(){
         return(
-        <div className={classes.container}>
-            <div className= {classes.left}>
+        <div >
+        
                 {console.log("adasd",this.state.userInfo)}
-                <div className={classes.userprofilebox}>
-                        <img src={require('../../../src/assets/profile.png')} className={classes.profileimg}/>
+               
+                <div className={classes.user}>
+                    <div className={classes.userprofilebox}>
+                            <img src={require('../../../src/assets/profile.png')} className={classes.profileimg}/>
+                    </div>
+                    <h3 className={classes.username}>@{this.state.userInfo.Username}</h3>
                 </div>
-                <p>{this.state.userInfo.userID}</p>
+
+
+                
+                
+                <div className={classes.userinfo}>
+                   {Object.keys(this.state.userInfo).map((key)=>{
+                       return(
+                       <div className={classes.info}>
+                           <h3 className={classes.category}>{key} :</h3>
+                           <h4 className={classes.value}>{this.state.userInfo[key]}</h4>
+                       </div>
+                   )})}                   
+           
+                </div>
+                
+
                 <RegularButton text="Leave Room"></RegularButton>
-            </div>
-            <div className={classes.right}>
+         
+            {/* <div className={classes.right}>
                 <h1>safds</h1>
                 {this.state.roomInfo.map((person, index) => (
                 <p key={index}>Hello, {person.userName} !</p>
                 ))}
-            </div>
+            </div> */}
         </div>
         );
 /*
