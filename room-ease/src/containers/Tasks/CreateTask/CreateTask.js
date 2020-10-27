@@ -63,8 +63,6 @@ class CreateTask extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         this.updateRoomName(prevProps);
-        let newRoomName = prevProps.roomName ? prevProps.roomName : this.props.roomName;
-        let oldRoomName = this.state.roomName;
 
         if (this.props.userID !== this.state.userID && this.state.userID === null) {
             this.setState({ userID: this.props.userID })
@@ -197,14 +195,14 @@ class CreateTask extends Component {
                     hours={`${this.state.hours}`}
                     minutes={`${this.state.minutes}`}
                 />
-                <MemberSelect
+                {/* <MemberSelect
                     potentialUsers={this.state.members}
                     addToList={this.addToList}
                     addedUsers={this.state.columns.users}
                     selectedUser={this.state.selectedUser}
                     selectUserFromDropdown={this.selectUserFromDropdown}
                     removeFromList={this.removeFromList}
-                ></MemberSelect>
+                ></MemberSelect> */}
                 <RegularButton text={"Submit"} onClick={this.submittedCreateTask} />
             </div>
         )
