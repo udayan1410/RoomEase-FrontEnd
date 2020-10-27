@@ -1,0 +1,25 @@
+.table{
+    text-align: center;   
+    border-collapse: collapse;      
+}
+
+.Header{    
+    font-size: 1.5rem;
+    border-bottom:1px solid black ;
+    color:#028090ff;
+    
+}
+
+.tableRecord{
+    padding: 15px;    
+    margin: 15px;     
+    font-size: 1.2rem;
+}
+
+.bgColorGray{    
+    background-color: rgb(209, 200, 200);
+}
+
+.bgColorWhite{
+    background-color: whitesmoke;
+}

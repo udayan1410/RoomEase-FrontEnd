@@ -4,6 +4,8 @@ import TextInput from "../../components/inputs/TextInput";
 import * as classes from './joinroom.module.css';
 import axios from 'axios';
 import { JOIN_ROOM_URL } from '../../constants/ServerRoutes';
+import { ROOM_CREATE_URL, ROOM_URL, ACTIVITY_URL } from '../../constants/ClientRoutes';
+
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class JoinRoom extends Component {
@@ -19,16 +21,21 @@ class JoinRoom extends Component {
         this.setState({ roomName: event.target.value });
     }
     authenticateRoom = async () => {
-        console.log("roomname: ",this.state.roomName)
-        let loginCredentials = { userID: '5f79657944f5f348ac09d781', roomName: this.state.roomName }
+        console.log("roomname: ", this.state.roomName)
+        let loginCredentials = { userID: localStorage.getItem('userID'), roomName: this.state.roomName }
         let loginStatus = (await axios.post(JOIN_ROOM_URL, loginCredentials)).data;
-        if(loginStatus.Result==='Success')
-            this.setState({error:'Added to room'})
+        if (loginStatus.Result === 'Success') {
+            this.setState({ error: 'Added to room' })
+            this.props.history.push(`${ROOM_URL}/${this.state.roomName}${ACTIVITY_URL}`);
+        }
         else
-            this.setState({error:loginStatus.Error})
-        console.log("login",loginStatus)
-        let { Result, Error } = loginStatus;
+            this.setState({ error: loginStatus.Error })
     }
+
+    createRoom = () => {
+        this.props.history.push(ROOM_CREATE_URL);
+    }
+
     render() {
         let errorMessage = null;
         if (this.state.error)
@@ -40,7 +47,7 @@ class JoinRoom extends Component {
                 <div className={classes.div}>
                     <p> Join Room </p>
                     <TextInput hint="Enter room name" type="text" onChange={this.handleRoomName} ></TextInput>
-                    <RegularButton disabled={this.state.roomName? false:true} text="Join" onClick={this.authenticateRoom}></RegularButton>
+                    <RegularButton disabled={this.state.roomName ? false : true} text="Join" onClick={this.authenticateRoom}></RegularButton>
                     {errorMessage}
                     <h3> OR</h3>
                     <RegularButton text="Create a room" onClick={this.createRoom}></RegularButton>

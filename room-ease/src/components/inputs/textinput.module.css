@@ -3,13 +3,18 @@
 }
 
 .Input{
-    width: 300px;
+    width: 45%;
+
     height: 30px;
     font-size: 1.1rem;
     margin: 10px;
     padding-left: 15px;
     padding: 10px;
     border: 1px solid #1C8EF9;
+}
+
+.Textarea{
+    width: 85%;
 }
 
 .title{

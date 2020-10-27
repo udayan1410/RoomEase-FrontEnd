@@ -13,6 +13,15 @@ const RegularButton = props => {
         buttonClasses.push(classes.ButtonEnabled);
     }
 
+    if (props.type === "danger") {
+        buttonClasses.push(classes.ButtonDanger);
+    }
+
+    if (props.type === "warning") {
+        buttonClasses.push(classes.ButtonWarning);
+    }
+
+
     return (
         <div>
             <input
