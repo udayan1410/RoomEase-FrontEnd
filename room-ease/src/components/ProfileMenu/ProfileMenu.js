@@ -3,8 +3,9 @@ import * as classes from './profilemenu.module.css';
 import { connect } from 'react-redux';
 import { LOGOUT_USER } from '../../store/Actions/ActionConstants';
 import logoutIcon from '../../assets/logout.png'
+import profileIcon from '../../assets/p1.png'
 import { withRouter } from 'react-router-dom'
-import { LOGIN_URL } from '../../constants/ClientRoutes';
+import { LOGIN_URL, USER_PROFILE_URL } from '../../constants/ClientRoutes';
 
 const ProfileMenu = props => {
 
@@ -18,16 +19,25 @@ const ProfileMenu = props => {
 
     let menuItems = [
         {
+            text: "View Profile",
+            image: profileIcon,
+            link: USER_PROFILE_URL
+        },
+        {
             text: "Logout",
             image: logoutIcon,
             link: LOGIN_URL
         },
+        
     ]
 
     let redirectFunction = (link) => {
         if (link === LOGIN_URL) {
             props.logoutUser();
             props.history.push(LOGIN_URL)
+        }
+        if(link === USER_PROFILE_URL){
+            props.history.push(USER_PROFILE_URL)
         }
 
     }
