@@ -25,4 +25,8 @@ export const ACTIVITY_URL = "/activity";
 //Chats
 export const CHAT_URL = "/chat";
 
+//profile
 export const USER_PROFILE_URL = "/profile";
+
+//room
+export const ROOM_MYROOM = "/room";
