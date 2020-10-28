@@ -1,5 +1,5 @@
 .Button{
-    width: 320px;
+    width: 75%;
     height: 40px;
     margin: 15px;
     font-size: 1.2rem;
@@ -29,5 +29,30 @@
     background-color: gray;
     cursor:auto;
     border: 0px;
+}
+
+
+.ButtonDanger{
+    background-color: rgb(168, 12, 12);
+    border: 1px solid red;
+}
+
+.ButtonDanger:hover{
+    color:  rgb(168, 12, 12);
+    background-color: white;
+    border: 1px solid red;
+}
+
+
+.ButtonWarning{
+    background-color: rgb(187, 187, 35);
+    border: 1px solid rgb(187, 187, 35);
+}
+
+
+.ButtonWarning:hover{
+    color:   rgb(187, 187, 35);
+    background-color: white;
+    border: 1px solid rgb(187, 187, 35);
 }
 

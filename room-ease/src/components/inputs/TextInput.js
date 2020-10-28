@@ -6,15 +6,25 @@ const TextInput = props => {
   let inputArea = null;
 
   if (props.type === "textarea")
-    inputArea = (<textarea rows="4" cols="50" onChange={props.onChange} placeholder={props.hint}></textarea>)
+    inputArea = (
+      <textarea
+        rows="4"
+        cols="50"
+        onChange={(event) => props.onChange(event, "textarea")}
+        placeholder={props.hint}
+        value={props.value}
+        className={classes.Textarea}>
+      </textarea>)
 
   else {
     inputArea = (<input
       className={classes.Input}
       type={props.type ? props.type : "text"}
       value={props.value}
-      onChange={props.onChange}
+      onChange={(event) => props.onChange(event, "text")}
       placeholder={props.hint}
+      onKeyDown={props.onKeyDown}
+      ref={props.reference}
     />)
   }
 

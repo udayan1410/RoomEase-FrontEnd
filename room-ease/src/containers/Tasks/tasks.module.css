@@ -1,0 +1,36 @@
+.Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: whitesmoke;                          
+    box-shadow: 1px 2px 10px black;   
+    border-radius: 5px;               
+    margin: 2% 5%; 
+    padding: 2%;
+}
+
+.Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;    
+}
+
+.Header h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.Icon{
+    width: 40px;
+    height: 40px;
+    float: right;
+    padding: 2px;
+    transition-duration: 0.2s;
+}
+
+.Icon:hover{
+    background-color: rgba(0,0,0,15%);
+    transform: scale(1.2);
+    border-radius: 50%;    
+}
+

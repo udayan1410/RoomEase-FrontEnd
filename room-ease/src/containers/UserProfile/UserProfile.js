@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
 import { USER_PROFILE_URL} from '../../constants/ServerRoutes';
@@ -60,6 +58,8 @@ class UserProfile extends Component{
         </div>
         );
     }
+
+
 }
 
 export default withLayout(UserProfile);

@@ -5,8 +5,7 @@ import TextInput from "../../../components/inputs/TextInput";
 import * as classes from './signup.module.css';
 import axios from 'axios';
 import { SIGNUP_URL } from '../../../constants/ServerRoutes';
-import ErrorMessage from "../../../components/inputs/ErrorMessage";
-
+// import ErrorMessage from "../../../components/inputs/ErrorMessage";
 
 class SignUp extends Component {
 
@@ -16,17 +15,18 @@ class SignUp extends Component {
     password: '',
     phoneNumber: '',
     error: '',
-    emailerror:'',
+    emailerror: '',
   };
 
   handleEmail = event => {
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.setState({ email: event.target.value });
+    // let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (! re.test(event.target.value) ) {
-      this.setState({emailerror:"Enter valid email"})
-    }
-    else
-      this.setState({emailerror:''});
+    // if (!re.test(event.target.value)) {
+    //   this.setState({ emailerror: "Enter valid email" })
+    // }
+    // else
+    //   this.setState({ email: event.target.value });
   };
   handlePassword = event => {
     this.setState({ password: event.target.value });
@@ -45,36 +45,38 @@ class SignUp extends Component {
   }
   authenticateUser = async () => {
 
-    if(this.validate()){
-    try {
+    if (this.validate()) {
+      try {
 
-      let loginCredentials = { userName: this.state.userName, phoneNumber: this.state.phoneNumber, email: this.state.email, password: this.state.password }
-      let loginStatus = (await axios.post(SIGNUP_URL, loginCredentials)).data;
-      let { Result, Error } = loginStatus;
-      console.log(Result)
-      if (Result === "Success") {
-        this.setState({ error: "" })
-        this.props.history.goBack();
+        let loginCredentials = { userName: this.state.userName, phoneNumber: this.state.phoneNumber, email: this.state.email, password: this.state.password }
+        let loginStatus = (await axios.post(SIGNUP_URL, loginCredentials)).data;
+        let { Result, Error } = loginStatus;
+        console.log(Result)
+        if (Result === "Success") {
+          this.setState({ error: "" })
+          this.props.history.goBack();
+        }
+        else
+          this.setState({ error: Error })
       }
-      else
-        this.setState({ error: Error })
+      catch (err) {
+        this.setState({ error: err.message })
+      }
     }
-    catch (err) {
-      this.setState({ error: err.message })
-    }
-    }
-    else{
+    else {
       this.setState({ error: "Fields cannot be empty" })
     }
   }
 
   render() {
     let erorrMessage = null;
-    let emailError= null;
+    let emailError = null;
     if (this.state.error)
       erorrMessage = (<p className={classes.error}>{this.state.error}</p>)
     if (this.state.emailerror)
       emailError = (<p className={classes.error}>{this.state.emailerror}</p>)
+
+
     return (
       <div >
         <h1>RoomEase</h1>

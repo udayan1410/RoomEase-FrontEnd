@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8080";
+export const BASE_URL = "http://10.0.0.70:8080";
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
@@ -13,8 +13,19 @@ export const TASKS_OF_ROOM_URL = BASE_URL + '/room/tasks';
 
 
 //TASK URLS
+export const TASK_URL = BASE_URL + "/task";
 export const TASK_CREATE_URL = BASE_URL + '/task/create';
 
 
 // Profile url
 export const USER_PROFILE_URL =BASE_URL +'/profile';
+
+//Activity
+export const ACTIVITY_URL = BASE_URL + "/room/feed";
+
+//Chat URL
+export const CHAT_URL = BASE_URL + "/room/chat";
+
+// Profile url
+export const USER_PROFILE_URL =BASE_URL +'/profile';
+

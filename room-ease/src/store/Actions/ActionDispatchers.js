@@ -24,6 +24,7 @@ const logoutUserAndDeleteData = (oldState, data) => {
 }
 
 const checkAuthState = (oldState, data) => {
+
     let state = { ...oldState };
     let userID = null, roomName = null;
 
