@@ -1,77 +1,63 @@
 import React, { Component } from 'react';
-import RegularButton from "../../components/inputs/RegularButton";
-// import TextInput from "../../components/inputs/TextInput";
-// import { Link, withRouter } from "react-router-dom";
-
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
-// import { USER_PROFILE_URL } from '../../constants/ClientRoutes';
-import { MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
+import { USER_PROFILE_URL} from '../../constants/ServerRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
 
-class UserProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            roomInfo: [],
-            userInfo: {},
+class UserProfile extends Component{
+    constructor(props){
+    super(props);
+        this.state={
+            roomInfo:[],
+            userInfo:{},
         }
     }
+    
 
-
-    componentDidMount() {
+    componentDidMount(){
         this.hasRoom()
     }
 
-    hasRoom = async () => {
-        let userID = 12312312
-        let roomName = localStorage.getItem('roomName')
-        console.log("adasd", userID, roomName)
-        let profileStatus = (await axios.get(MEMBERS_OF_ROOM_URL + "?roomname=SCU")).data;
-        // let { Result, Error } = profileStatus
-        console.log("asdasasdasdas", profileStatus.Members)
-        this.setState({ roomInfo: profileStatus.Members });
-        let obj = {}
-        obj["userID"] = userID;
-        obj["roomName"] = roomName;
-        this.setState({ userInfo: obj });
-        console.log(this.state.roomInfo);
-    }
-    check = () => {
-        console.log("Adsdas")
-    }
+    hasRoom= async ()=>{
 
-    render() {
-        return (
-            <div className={classes.container}>
-                <div className={classes.left}>
-                    {console.log("adasd", this.state.userInfo)}
+        let userID=localStorage.getItem('userID')
+        let roomName=localStorage.getItem('roomName')
+        
+        let profileStatus= (await axios.get(USER_PROFILE_URL+"?userID="+userID+"&roomName="+roomName)).data;
+        // let {Result,Error}= profileStatus
+        this.setState({roomInfo:profileStatus.Members});
+        let obj={}
+        obj["Username"]=profileStatus.userInfo.userName;
+        obj["Room Name"]=roomName;
+        obj["Email id"]=profileStatus.userInfo.email;
+        obj["Phone no"]=profileStatus.userInfo.phoneNumber;
+        this.setState({userInfo:obj});
+       
+}
+    
+    render(){
+        return(
+        <div > 
+                <div className={classes.user}>
                     <div className={classes.userprofilebox}>
-                        <img alt={"TEST"} src={require('../../../src/assets/profile.png')} className={classes.profileimg} />
+                            <img src={require('../../../src/assets/profile.png')} className={classes.profileimg} alt="Profile "/>
                     </div>
-                    <p>{this.state.userInfo.userID}</p>
-                    <RegularButton text="Leave Room"></RegularButton>
+                    <h3 className={classes.username}>@{this.state.userInfo.Username}</h3>
                 </div>
-                <div className={classes.right}>
-                    <h1>safds</h1>
-                    {this.state.roomInfo.map((person, index) => (
-                        <p key={index}>Hello, {person.userName} !</p>
-                    ))}
+
+                <div className={classes.userinfo}>
+                   {Object.keys(this.state.userInfo).map((key)=>{                
+                       return(
+                       <div className={classes.info} key={key}>
+                           <h3 className={classes.category}>{key} :</h3>
+                           <h4 className={classes.value}>{this.state.userInfo[key]}</h4>
+                       </div>
+                   )})}                   
+           
                 </div>
-            </div>
+        </div>
         );
-        /*
-            2 subdivs
-            1 for left side
-                   profile info
-                   flexbox left
-                   
-            1 for right side
-                    member and roominfo
-        */
     }
-
-
 
 
 }
