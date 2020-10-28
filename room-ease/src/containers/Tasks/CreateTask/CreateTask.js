@@ -43,7 +43,6 @@ class CreateTask extends Component {
     }
 
     updateRoomName = (prevProps) => {
-
         let setAndUpdate = (roomName) => {
             this.setState({ roomName: roomName })
             this.fetchAndUpdateUsersOfRoom(roomName);
@@ -57,7 +56,7 @@ class CreateTask extends Component {
     }
 
     componentDidMount() {
-        // this.props.checkAuthState();
+        this.props.checkAuthState();
         this.updateRoomName();
     }
 
@@ -181,6 +180,18 @@ class CreateTask extends Component {
 
     render() {
 
+        let members = null;
+
+        if (this.state.roomName) {
+            members = (<MemberSelect
+                potentialUsers={this.state.members}
+                addToList={this.addToList}
+                addedUsers={this.state.columns.users}
+                selectedUser={this.state.selectedUser}
+                selectUserFromDropdown={this.selectUserFromDropdown}
+                removeFromList={this.removeFromList}
+            ></MemberSelect>)
+        }
 
         return (
             <div className={classes.Form} >
@@ -195,14 +206,7 @@ class CreateTask extends Component {
                     hours={`${this.state.hours}`}
                     minutes={`${this.state.minutes}`}
                 />
-                <MemberSelect
-                    potentialUsers={this.state.members}
-                    addToList={this.addToList}
-                    addedUsers={this.state.columns.users}
-                    selectedUser={this.state.selectedUser}
-                    selectUserFromDropdown={this.selectUserFromDropdown}
-                    removeFromList={this.removeFromList}
-                ></MemberSelect>
+                {members}
                 <RegularButton text={"Submit"} onClick={this.submittedCreateTask} />
             </div>
         )

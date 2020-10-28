@@ -8,7 +8,7 @@ const Tasklist = props => {
 
         <div className={classes.Container}>
             {props.tasks.map(task => {
-                const MAX_LENGTH = 100;
+                const MAX_LENGTH = 50;
 
                 let shortTaskComments = task.comments;
                 if (shortTaskComments.length > MAX_LENGTH)
