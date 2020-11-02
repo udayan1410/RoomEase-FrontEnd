@@ -5,6 +5,8 @@ import notesImage from '../../assets/notes.png'
 import splitMoneyImage from '../../assets/split_money.png'
 import inviteImage from '../../assets/invite.png'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { CHECK_AUTH_STATE } from '../../store/Actions/ActionConstants';
 
 const NavigationDrawer = props => {
 
@@ -20,7 +22,7 @@ const NavigationDrawer = props => {
         {
             image: roomImage,
             text: "My Room",
-            link: "/"
+            link: `/room/${props.roomName}/activity`
         },
         {
             image: splitMoneyImage,
@@ -44,7 +46,7 @@ const NavigationDrawer = props => {
             <h1>Select an option</h1>
             <ul className={classes.list}>
                 {menuItems.map(item =>
-                    <Link to={item.link} key={item.text} className={classes.Link}>
+                    <Link to={item.link} key={item.text} className={classes.Link} onClick={props.closeMenu}>
                         <li className={classes.listItem}>
                             <img src={item.image} className={classes.image} alt={item.text} />
                             <p className={classes.items}>{item.text}</p>
@@ -54,7 +56,20 @@ const NavigationDrawer = props => {
             </ul>
         </div >
     )
-
 }
 
-export default NavigationDrawer;
+let mapStateToProps = state => {
+    return {
+        roomName: state.roomName
+    }
+}
+
+let mapDispatchToProps = dispatch => {
+    return {
+        checkAuthState: () => dispatch({ type: CHECK_AUTH_STATE })
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer);

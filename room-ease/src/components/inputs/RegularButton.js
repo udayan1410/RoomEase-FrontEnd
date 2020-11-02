@@ -4,7 +4,7 @@ import * as classes from './regularbutton.module.css';
 
 const RegularButton = props => {
 
-    let buttonClasses = [classes.Button];
+    let buttonClasses = [classes.Button, props.extraStyles];
 
     if (props.disabled)
         buttonClasses.push(classes.ButtonDisabled);

@@ -19,6 +19,9 @@ const reducer = (state = initialState, action) => {
         case ActionConstants.CHECK_AUTH_STATE:
             return ActionDispatchers.checkAuthState(state, action);
 
+        case ActionConstants.CLEAR_USER_ROOM:
+            return ActionDispatchers.clearUserRoom(state, action);
+
         default:
             return state;
 
