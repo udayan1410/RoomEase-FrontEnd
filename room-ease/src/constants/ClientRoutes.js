@@ -27,4 +27,5 @@ export const CHAT_URL = "/chat";
 
 export const USER_PROFILE_URL = "/profile";
 export const CREATE_NOTES_URL ="/notes/create";
-export const VIEW_ALL_NOTES_URL ="notes/view";
+export const VIEW_ALL_NOTES_URL ="/notes/view";
+export const VIEW_SINGLE_NOTE_URL ="notes/view/:noteid"

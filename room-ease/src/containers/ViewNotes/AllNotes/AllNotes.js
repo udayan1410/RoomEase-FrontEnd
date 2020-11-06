@@ -9,13 +9,25 @@ class AllNotes extends Component{
     constructor(props){
         super(props);
         this.state={
-
+            notes:[
+                {
+                    Title: "Note1Note1Note1Note1Note1Note1Note1",
+                    Note: "Note1Note1Note1Note1Note1Note1Note1",
+                    },
+                {
+                        Title: "Note1Note1Note1Note1Note1Note1Note1",
+                        Note: "Note1Note1Note1Note1Note1Note1Note1",
+                    },
+            ]
         }
     }
     render(){
         return(
             <div>
-                
+              {this.state.notes.map((key,idx)=>
+                //  {console.log(key.Title)}
+                 <h2 key={idx} >{key.Title} </h2> 
+              )}
             </div>
         )
     }
