@@ -1,6 +1,6 @@
 .Form{
     background-color: whitesmoke;    
-    margin-top: 10%;        
+    margin: 10% 0;            
     min-width: 450px;
     display: inline-block;
     text-align: center;
@@ -9,3 +9,10 @@
     width: auto;
     padding: 0 5% 5% 5%;
 }
+
+@media (max-width: 1000px) {
+    .Form {      
+        min-width: 250px;                
+        max-width: 80%;
+    }
+  }
