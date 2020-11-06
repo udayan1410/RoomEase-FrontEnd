@@ -10,6 +10,7 @@ class UserProfile extends Component{
         this.state={
             roomInfo:[],
             userInfo:{},
+            password:'',
         }
     }
     
@@ -31,6 +32,8 @@ class UserProfile extends Component{
         obj["Room Name"]=roomName;
         obj["Email id"]=profileStatus.userInfo.email;
         obj["Phone no"]=profileStatus.userInfo.phoneNumber;
+        this.state.password=profileStatus.userInfo.password;
+        console.log(this.state.password);
         this.setState({userInfo:obj});
        
 }
