@@ -14,7 +14,26 @@ export const ROOM_HOMEPAGE = "/room/:roomName"
 export const TASK_URL = "/task";
 export const TASK_CREATE_URL = TASK_URL + "/create";
 
+
+
+//Homepage URLS
+export const ROOM_TASKS = "/tasks";
+export const ROOM_ALL_TASKS_URL = "/tasks/";
+export const ROOM_ONE_TASK_URL = ROOM_HOMEPAGE + "/tasks/:taskid"
+
+//Activity
+export const ACTIVITY_URL = "/activity";
+
+//Chats
+export const CHAT_URL = "/chat";
+
+//profile
 export const USER_PROFILE_URL = "/profile";
+
+//room
+export const ROOM_MYROOM = "/room";
+
+//notes
 export const CREATE_NOTES_URL ="/notes/create";
 export const VIEW_ALL_NOTES_URL ="/notes/view";
 export const VIEW_SINGLE_NOTE_URL ="notes/view/:noteid"
