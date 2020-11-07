@@ -1,71 +1,15 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import RegularButton from "../../components/inputs/RegularButton";
 import TextInput from "../../components/inputs/TextInput";
 import { Link, withRouter } from "react-router-dom";
-
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
 import { USER_PROFILE_URL,MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
-
-=======
-import * as classes from './userprofile.module.css';
-import axios from 'axios';
-import { USER_PROFILE_URL} from '../../constants/ServerRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
->>>>>>> master
 
 class UserProfile extends Component{
     constructor(props){
     super(props);
-<<<<<<< HEAD
-        
-    }
-    hasRoom= async ()=>{
-        let userID='5f79657944f5f348ac09d781'
-        let roomname="SCU"
-        let userStatus=(await axios.post(MEMBERS_OF_ROOM_URL, roomname)).data;
-        let { responseObject, user } = userStatus;
-        console.log(responseObject)
-
-        if (responseObject.Result === "Success")
-        {
-            return(
-                <div>
-                    <p>Hi</p>
-                </div>
-            )
-        }
-        else
-            return null
-
-
-    }
-
-
-    
-    
-    render(){
-        return(
-        <div>
-
-            <h1>Hiass</h1>
-            {this.hasRoom}
-            
-        </div>
-        );
-
-
-
-    }
-
-
-
-
-}
-
-export default withRouter(UserProfile);
-=======
         this.state={
             roomInfo:[],
             userInfo:{},
@@ -122,6 +66,5 @@ export default withRouter(UserProfile);
 }
 
 export default withLayout(UserProfile);
->>>>>>> master
 
 
