@@ -9,7 +9,8 @@ import CreateRoom from './containers/CreateRoom/CreateRoom'
 import Homepage from './containers/Homepage/Homepage'
 import CreateTask from './containers/Tasks/CreateTask/CreateTask'
 import CreateNotes from './containers/CreateNotes/CreateNotes'
-import {USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL, CREATE_NOTES_URL } from './constants/ClientRoutes';
+import ViewAllNotes from './containers/ViewNotes/AllNotes/AllNotes'
+import {USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL, CREATE_NOTES_URL, VIEW_ALL_NOTES_URL } from './constants/ClientRoutes';
 // import } from './constants/ServerRoutes'
 class App extends Component {
 
@@ -27,9 +28,12 @@ class App extends Component {
           <Route path={ROOM_HOMEPAGE} component={Homepage} />
 
           <Route path={TASK_CREATE_URL} component={CreateTask} />
-          <Route path={CREATE_NOTES_URL} component={CreateNotes}/>
           <Route path={USER_PROFILE_URL} component={UserProfile}/>
           
+          <Route path={CREATE_NOTES_URL} component={CreateNotes}/>
+          <Route path={VIEW_ALL_NOTES_URL} component={ViewAllNotes}/>
+          
+
           <Route path={BASE_URL} component={Login} />
         </Switch>
       </div>
