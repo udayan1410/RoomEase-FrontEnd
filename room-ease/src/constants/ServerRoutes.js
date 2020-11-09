@@ -21,3 +21,6 @@ export const TASK_CREATE_URL = BASE_URL + '/task/create';
 
 // Profile url
 export const USER_PROFILE_URL =BASE_URL +'/profile';
+
+//Notes url
+export const NOTES_CREATION_URL =BASE_URL+'notes/create';

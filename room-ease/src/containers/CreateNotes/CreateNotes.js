@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withLayout } from '../../hoc/Layout/withLayout'
 import RegularButton from '../../components/inputs/RegularButton';
 import TextInput from '../../components/inputs/TextInput';
+import {  } from '../../constants/ServerRoutes';
 
 class CreateNotes extends Component{
     constructor(props){
@@ -11,6 +12,7 @@ class CreateNotes extends Component{
         this.state={
             note:'',
             title:'',
+
         }
     }
     handleChange=(event)=>{
@@ -23,7 +25,32 @@ class CreateNotes extends Component{
 
     }
     shareNote=()=>{
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+        // let createdOn = new Date();
+        // createdOn = `${monthNames[createdOn.getMonth()]} ${createdOn.getDate()} ${createdOn.getFullYear()}`;
+        // let columns = {};
+        // columns.daysOfTheWeek = this.state.columns.daysOfTheWeek;
+        // columns.users = this.state.columns.users;
+        // columns.timeOfDay = `${this.state.hours}:${this.state.minutes} ${this.state.timePeriod}`
+
+        // let notesModel = {
+        //     noteTitle: this.state.title,
+        //     body: this.state.note ,
+        //     roomName: localStorage.getItem(roomName), 
+        //     userID: localStorage.getItem(userID)
+        // };
+
+
+        // let notesCreationStatus = (await Axios.post(NOTES_CREATION_URL , notesModel)).data;
+        
+        
+        // //**********PLEASE CHECK THIS */
+        // if (notesCreationStatus.Result === "Success")
+            this.props.history.push('/notes/view');
+
+        // else
+        //     console.log(notesCreationStatus);
     }
     
     render(){

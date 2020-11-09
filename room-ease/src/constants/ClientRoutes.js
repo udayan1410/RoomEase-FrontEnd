@@ -35,5 +35,5 @@ export const ROOM_MYROOM = "/room";
 
 //notes
 export const CREATE_NOTES_URL ="/notes/create";
+export const VIEW_SINGLE_NOTE_URL ="/notes/view/singlenote"
 export const VIEW_ALL_NOTES_URL ="/notes/view";
-export const VIEW_SINGLE_NOTE_URL ="notes/view/:noteid"
