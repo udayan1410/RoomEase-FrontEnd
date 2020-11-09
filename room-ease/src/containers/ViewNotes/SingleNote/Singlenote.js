@@ -29,23 +29,6 @@ class SingleNote extends Component{
         columns.users = this.state.columns.users;
         columns.timeOfDay = `${this.state.hours}:${this.state.minutes} ${this.state.timePeriod}`
 
-        // let notesModel = {
-        //     noteTitle: this.state.title,
-        //     body: this.state.note ,
-        //     roomName: localStorage.getItem(roomName), 
-        //     userID: localStorage.getItem(userID)
-        // };
-
-
-        // let notesCreationStatus = (await Axios.post(NOTES_CREATION_URL , notesModel)).data;
-        
-        
-        // //**********PLEASE CHECK THIS */
-        // if (notesCreationStatus.Result === "Success")
-        //     this.props.history.push('/notes/view');
-
-        // else
-        //     console.log(notesCreationStatus);
     }
     
     render(){
@@ -64,7 +47,5 @@ class SingleNote extends Component{
             </div>
         )
     }
-
-
 }
 export default withLayout(SingleNote);

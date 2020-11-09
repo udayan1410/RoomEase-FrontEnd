@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import * as classes from './createnotes.module.css';
 import axios from 'axios';
-import { withLayout } from '../../hoc/Layout/withLayout'
-import RegularButton from '../../components/inputs/RegularButton';
-import TextInput from '../../components/inputs/TextInput';
-import {  } from '../../constants/ServerRoutes';
+import { withLayout } from '../../../hoc/Layout/withLayout'
+import RegularButton from '../../../components/inputs/RegularButton';
+import TextInput from '../../../components/inputs/TextInput';
+import {  } from '../../../constants/ServerRoutes';
 
 class CreateNotes extends Component{
     constructor(props){

@@ -1,0 +1,27 @@
+.Header{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;    
+    background-color: white;
+    max-width: 500px;
+}
+
+.Header h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.Icon{
+    width: 40px;
+    height: 40px;
+    float: right;
+    padding: 2px;
+    transition-duration: 0.2s;
+}
+
+.Icon:hover{
+    background-color: rgba(0,0,0,15%);
+    transform: scale(1.2);
+    border-radius: 50%;    
+}
