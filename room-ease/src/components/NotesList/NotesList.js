@@ -8,11 +8,11 @@ const NotesList = props => {
         <div className={classes.Container}>
             {props.notes.map(note => {
                 const MAX_LENGTH = 50;
-                let shortNote = note.Note;
+                let shortNote = note.body;
                 if (shortNote.length > MAX_LENGTH)
                     shortNote = shortNote.slice(0, MAX_LENGTH) + "...";
 
-                let Title = note.Title;
+                let Title = note.title;
                 if (Title.length > MAX_LENGTH)
                     Title = Title.slice(0, MAX_LENGTH) + "...";
                 
@@ -21,8 +21,8 @@ const NotesList = props => {
                     <Link
                     to={`${NOTES_URL}/${note._id}`}
                     key={note._id}
-                    title={note.Title}
-                    note={note.Note}
+                    title={note.title}
+                    note={note.body}
                     style={{ textDecoration: "none" }}
                     className={classes.Link}
                 >

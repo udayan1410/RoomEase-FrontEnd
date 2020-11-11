@@ -14,8 +14,6 @@ export const ROOM_HOMEPAGE = "/room/:roomName"
 export const TASK_URL = "/task";
 export const TASK_CREATE_URL = TASK_URL + "/create";
 
-
-
 //Homepage URLS
 export const ROOM_TASKS = "/tasks";
 export const ROOM_ALL_TASKS_URL = "/tasks/";
@@ -39,4 +37,5 @@ export const SINGLE_NOTE_URL ="/notes/:noteid";
 export const NOTES_URL ="/notes";
 
 export const VIEW_ROOM_NOTES_URL="/notes/room";
-export const VIEW_SELF_NOTES_URL="notes/self";
+export const VIEW_SELF_NOTES_URL="notes/selfnotes";
+export const VIEW_SINGLE_NOTE_URL="notes/:noteid";

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as classes from './singlenote.module.css';
+import * as classes from './editnote.module.css';
 import axios from 'axios';
 import { USER_PROFILE_URL} from '../../../constants/ServerRoutes';
 import { withLayout } from '../../../hoc/Layout/withLayout'
@@ -9,8 +9,8 @@ class SingleNote extends Component{
     constructor(props){
         super(props);
         this.state={
-            note:'Note 1',
-            title:'Title1',
+            note:'',
+            title:'',
         }
     }
     handleChange=(event)=>{
@@ -19,7 +19,15 @@ class SingleNote extends Component{
     titleChange=(event)=>{
         this.setState({title:event.target.value});
     }
+    
     shareNote=()=>{
+            if (window.location.href.indexOf("create") > -1) {
+            alert("your url contains the name franky");
+        }
+        if(this.props.history.location.search("create"))
+            console.log("Yes")
+            else
+                console.log("NO")
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         let createdOn = new Date();
@@ -28,7 +36,7 @@ class SingleNote extends Component{
         columns.daysOfTheWeek = this.state.columns.daysOfTheWeek;
         columns.users = this.state.columns.users;
         columns.timeOfDay = `${this.state.hours}:${this.state.minutes} ${this.state.timePeriod}`
-
+    
     }
     
     render(){

@@ -10,7 +10,7 @@ import Homepage from './containers/Homepage/Homepage'
 import CreateTask from './containers/Tasks/CreateTask/CreateTask'
 import CreateNotes from './containers/ViewNotes/CreateNotes/CreateNotes'
 import ViewAllNotes from './containers/ViewNotes/AllNotes/AllNotes'
-import SingleNote from './containers/ViewNotes/SingleNote/Singlenote'
+import EditNote from './containers/ViewNotes/EditNote/EditNote'
 import {USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL, CREATE_NOTES_URL, NOTES_URL ,SINGLE_NOTE_URL} from './constants/ClientRoutes';
 // import Singlenote from './containers/ViewNotes/SingleNote/Singlenote';
 // import } from './constants/ServerRoutes'
@@ -33,7 +33,7 @@ class App extends Component {
           <Route path={USER_PROFILE_URL} component={UserProfile}/>
           
           <Route path={CREATE_NOTES_URL} component={CreateNotes}/>
-          <Route path={SINGLE_NOTE_URL} component={SingleNote}/>
+          <Route path={SINGLE_NOTE_URL} component={EditNote}/>
           <Route path={NOTES_URL} component={ViewAllNotes}/>
 
           <Route path={BASE_URL} component={Login} />

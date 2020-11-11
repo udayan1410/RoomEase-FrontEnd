@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import * as classes from './createnotes.module.css';
-import axios from 'axios';
+import Axios from 'axios';
+import { connect } from 'react-redux';
+
 import { withLayout } from '../../../hoc/Layout/withLayout'
 import RegularButton from '../../../components/inputs/RegularButton';
 import TextInput from '../../../components/inputs/TextInput';
-import {  } from '../../../constants/ServerRoutes';
+import { NOTES_CREATION_URL } from '../../../constants/ServerRoutes';
 
 class CreateNotes extends Component{
     constructor(props){
@@ -12,7 +14,7 @@ class CreateNotes extends Component{
         this.state={
             note:'',
             title:'',
-
+            shared:false,
         }
     }
     handleChange=(event)=>{
@@ -21,36 +23,44 @@ class CreateNotes extends Component{
     titleChange=(event)=>{
         this.setState({title:event.target.value});
     }
-    saveNote=()=>{
 
+    saveNote=()=>{
+        this.uploadNote()
     }
     shareNote=()=>{
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        this.setState({shared:true})
+        this.uploadNote()
+        this.props.history.push('/notes')
+    }
+    uploadNote= async()=>{
+        if(this.state.note.length!=0 && this.state.title.length!=0)
+        {
+        
+       
+        let notesModel = {
+            noteTitle: this.state.title,
+            body: this.state.note ,
+            roomName: localStorage.getItem("roomName"), 
+            userID: localStorage.getItem("userID"),
+            shared: this.state.shared, 
+        };
 
-        // let createdOn = new Date();
-        // createdOn = `${monthNames[createdOn.getMonth()]} ${createdOn.getDate()} ${createdOn.getFullYear()}`;
-        // let columns = {};
-        // columns.daysOfTheWeek = this.state.columns.daysOfTheWeek;
-        // columns.users = this.state.columns.users;
-        // columns.timeOfDay = `${this.state.hours}:${this.state.minutes} ${this.state.timePeriod}`
 
-        // let notesModel = {
-        //     noteTitle: this.state.title,
-        //     body: this.state.note ,
-        //     roomName: localStorage.getItem(roomName), 
-        //     userID: localStorage.getItem(userID)
-        // };
-
-
-        // let notesCreationStatus = (await Axios.post(NOTES_CREATION_URL , notesModel)).data;
+        let notesCreationStatus = (await Axios.post(NOTES_CREATION_URL , notesModel)).data;
         
         
         // //**********PLEASE CHECK THIS */
-        // if (notesCreationStatus.Result === "Success")
-            this.props.history.push('/notes/view');
-
-        // else
-        //     console.log(notesCreationStatus);
+        if (notesCreationStatus.Result === "Success")
+           alert("Success")
+        else
+            alert("Failed") 
+        // this.props.history.push('/notes/view');
+    }
+    else
+    {
+        alert("Please fill required details")
+        
+    }
     }
     
     render(){
@@ -64,7 +74,7 @@ class CreateNotes extends Component{
                         <RegularButton onClick={this.shareNote} text="Share with room"> </RegularButton>
                     </div>
                     <div className={classes.button2}>
-                        <RegularButton onClick={this.saveNote} text="Save note"></RegularButton>
+                        <RegularButton onClick={this.saveNote} text="Save as self note"></RegularButton>
                     </div>
                 </div>
 
