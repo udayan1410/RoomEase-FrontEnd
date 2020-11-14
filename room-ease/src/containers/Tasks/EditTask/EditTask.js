@@ -27,7 +27,7 @@ class EditTask extends Component {
         minutes: "",
         taskID: null,
         color: "",
-        roomName: ""
+        roomName: "",
     }
 
 

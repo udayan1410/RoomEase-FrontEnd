@@ -24,9 +24,7 @@ class CreateNotes extends Component{
         this.setState({title:event.target.value});
     }
 
-    saveNote=()=>{
-        this.uploadNote()
-    }
+    
     shareNote=()=>{
         this.setState({shared:true})
         this.uploadNote()
@@ -62,7 +60,9 @@ class CreateNotes extends Component{
         
     }
     }
-    
+    handleSharing=()=>{
+        this.setState({shared:!this.state.shared})
+    }
     render(){
         return (
           <div >
@@ -71,11 +71,12 @@ class CreateNotes extends Component{
                 
                 <div className={classes.buttoncontainer}>
                     <div className={classes.button1}>
+                    <p>Share with roommates:<input type="checkbox" checked={this.state.shared} onClick={this.handleSharing}/></p>
+                    
                         <RegularButton onClick={this.shareNote} text="Share with room"> </RegularButton>
+
                     </div>
-                    <div className={classes.button2}>
-                        <RegularButton onClick={this.saveNote} text="Save as self note"></RegularButton>
-                    </div>
+                    
                 </div>
 
           </div>  

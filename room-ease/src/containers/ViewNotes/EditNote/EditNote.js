@@ -1,59 +1,94 @@
 import React, { Component } from 'react';
 import * as classes from './editnote.module.css';
-import axios from 'axios';
-import { USER_PROFILE_URL} from '../../../constants/ServerRoutes';
+import Axios from 'axios';
+import { NOTES_URL} from '../../../constants/ServerRoutes';
 import { withLayout } from '../../../hoc/Layout/withLayout'
 import RegularButton from '../../../components/inputs/RegularButton';
 
-class SingleNote extends Component{
+class EditNote extends Component{
     constructor(props){
         super(props);
-        this.state={
-            note:'',
+        this.state={ 
+            _id:null,
+            body:'',
             title:'',
-        }
+            shared:false,
+            roomName: "",          
+        createdBy:"",
+        createdOn:"",
+        userID: localStorage.getItem("userID"),
+    }
+
     }
     handleChange=(event)=>{
-        this.setState({note: event.target.value})
+        this.setState({body: event.target.value})
     }
     titleChange=(event)=>{
         this.setState({title:event.target.value});
     }
     
-    shareNote=()=>{
-            if (window.location.href.indexOf("create") > -1) {
-            alert("your url contains the name franky");
-        }
-        if(this.props.history.location.search("create"))
-            console.log("Yes")
-            else
-                console.log("NO")
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
 
-        let createdOn = new Date();
-        createdOn = `${monthNames[createdOn.getMonth()]} ${createdOn.getDate()} ${createdOn.getFullYear()}`;
-        let columns = {};
-        columns.daysOfTheWeek = this.state.columns.daysOfTheWeek;
-        columns.users = this.state.columns.users;
-        columns.timeOfDay = `${this.state.hours}:${this.state.minutes} ${this.state.timePeriod}`
-    
+    getNotedetails= async()=>{
+        let noteid = this.props.match.params.noteid
+        let url = NOTES_URL + "?noteid=" + noteid;
+        let taskModel = (await Axios.get(url)).data;
+        console.log("Note Content",taskModel.notes[0])
+        let { body, title,shared,createdOn, createdBy,roomName,_id } = taskModel.notes[0];
+        this.setState(
+            {title,
+            roomName,
+             shared,
+             _id,
+             body,
+             createdBy,
+             createdOn,
+
+            })
+
     }
-    
+    handleSharing=()=>{
+        this.setState({shared:!this.state.shared})
+    }
+    deleteNote= async()=>{
+        let taskDeletionStatus = (await Axios.delete(`${NOTES_URL}?noteid=${this.state.noteID}&userID=${localStorage.getItem("userID")}`));
+        console.log(taskDeletionStatus);
+        this.props.history.goBack();
+    }
+
+    updateNote= async()=>{
+        let notesModel={
+            shared: this.state.shared,
+            _id:this.state._id,
+            createdOn: this.state.createdOn,
+            title: this.state.title,
+            body: this.state.body,
+            createdBy: this.state.createdBy,
+            userID:this.state.userID,
+        }
+        let noteUpdationStatus =(await Axios.patch(NOTES_URL,notesModel)).data;
+        console.log(noteUpdationStatus);
+        this.props.history.goBack();
+    }
+    componentDidMount(){
+        this.getNotedetails();
+    }
     render(){
         return(
             <div>
                <input value={this.state.title} placeholder="Title" onChange={this.titleChange} className={classes.title}/>
-                <textarea placeholder="Type your note here.." className={classes.note} name="text area" value={this.state.note} onChange={this.handleChange}></textarea>
-                
-                <div className={classes.buttoncontainer}>
-                    
+                <textarea placeholder="Type your note here.." className={classes.note} name="text area" value={this.state.body} onChange={this.handleChange}></textarea>
+                <div className={classes.buttoncontainer}>                  
                     <div className={classes.button2}>
-                        <RegularButton onClick={this.saveNote} text="Update note"></RegularButton>
-                    </div>
+                    <p>Share with roommates:<input type="checkbox" checked={this.state.shared} onClick={this.handleSharing}/></p>
+                    <RegularButton onClick={this.updateNote} text="Update note"></RegularButton>
+                    </div>   
                 </div>
- 
+                <div style={{width:250, justifyContent:"center"}}>
+                    <RegularButton onClick={this.deleteNote} text="Delete note"></RegularButton>
+                </div>
             </div>
         )
     }
 }
-export default withLayout(SingleNote);
+export default withLayout(EditNote);
