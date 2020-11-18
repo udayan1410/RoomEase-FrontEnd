@@ -52,7 +52,7 @@ class EditNote extends Component{
     }
     deleteNote= async()=>{
         let taskDeletionStatus = (await Axios.delete(`${NOTES_URL}?noteid=${this.state.noteID}&userID=${localStorage.getItem("userID")}`));
-        console.log(taskDeletionStatus);
+        console.log("Status",taskDeletionStatus);
         this.props.history.goBack();
     }
 

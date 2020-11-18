@@ -27,3 +27,5 @@ export const NOTES_URL =BASE_URL+'/notes'
 export const NOTES_CREATION_URL =BASE_URL+'/notes/create';
 export const SELF_NOTES_URL =BASE_URL+'/notes/selfnotes';
 
+export const ROOM_NOTES_URL =BASE_URL+'/notes/roomnotes';
+
