@@ -9,9 +9,14 @@ body {
   background-image: url('./assets/bg2.png'); 
   /* background-repeat: no-repeat; */
   background-size: 100%;
+  
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+

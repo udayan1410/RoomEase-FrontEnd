@@ -31,6 +31,11 @@
     border: 0px;
 }
 
+.ButtonDisabled:hover{
+    background-color: gray;
+    cursor:auto;
+    border: 0px;
+}
 
 .ButtonDanger{
     background-color: rgb(168, 12, 12);

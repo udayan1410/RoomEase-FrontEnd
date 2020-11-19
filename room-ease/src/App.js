@@ -4,13 +4,12 @@ import { Route, Switch } from 'react-router-dom'
 import Login from './containers/Account/Login/Login';
 import Signup from './containers/Account/Signup/Signup';
 import JoinRoom from './containers/JoinRoom/JoinRoom'
-
-
+import SplitEase from './containers/SplitEase/SplitEase';
 import UserProfile from './containers/UserProfile/UserProfile';
 import CreateRoom from './containers/CreateRoom/CreateRoom'
 import Homepage from './containers/Homepage/Homepage'
 import CreateTask from './containers/Tasks/CreateTask/CreateTask'
-import { USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL } from './constants/ClientRoutes';
+import { USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL, SPLIT_EASE_URL } from './constants/ClientRoutes';
 
 class App extends Component {
 
@@ -31,6 +30,8 @@ class App extends Component {
           <Route path={TASK_CREATE_URL} component={CreateTask} />
 
           <Route path={USER_PROFILE_URL} component={UserProfile} />
+
+          <Route path={SPLIT_EASE_URL} component={SplitEase} />
 
           <Route path={BASE_URL} component={Login} />
         </Switch>

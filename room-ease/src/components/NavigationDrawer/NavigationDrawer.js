@@ -7,6 +7,7 @@ import inviteImage from '../../assets/invite.png'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { CHECK_AUTH_STATE } from '../../store/Actions/ActionConstants';
+import * as URLS from '../../constants/ClientRoutes';
 
 const NavigationDrawer = props => {
 
@@ -26,8 +27,8 @@ const NavigationDrawer = props => {
         },
         {
             image: splitMoneyImage,
-            text: "Split Money",
-            link: "/"
+            text: "Split Ease",
+            link: URLS.SPLIT_EASE_URL + URLS.SPLIT_EASE_FEED
         },
         {
             image: notesImage,

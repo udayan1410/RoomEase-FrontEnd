@@ -30,3 +30,9 @@ export const USER_PROFILE_URL = "/profile";
 
 //room
 export const ROOM_MYROOM = "/room";
+
+
+//split money
+export const SPLIT_EASE_URL = "/splitease"
+export const SPLIT_EASE_EXPENSE = "/expenses"
+export const SPLIT_EASE_FEED = "/feed"

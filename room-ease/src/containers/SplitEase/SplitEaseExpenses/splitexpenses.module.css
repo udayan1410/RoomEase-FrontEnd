@@ -1,0 +1,80 @@
+.ExpenseContainer{
+    display: flex;
+}
+
+.UserExpense{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+    flex-grow: 1;
+}
+
+.userName{    
+    font-size: 1.5rem;
+    flex-grow: 2;      
+    text-align: start;  
+    padding-left: 20px;
+}
+
+.userBalance{    
+    margin: 2px;
+    padding: 2px;
+    font-size: 1.5rem;    
+}
+
+.userBalancePositive{
+    color: green;
+}
+
+.userBalanceNegative{
+    color: red;
+}
+
+.userProfile{    
+    width: 40px;
+    height: 40px;    
+}
+
+.userProfile img{
+    width: auto;
+    height: 100%;
+}
+
+.balanceMessage{
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;    
+}
+
+.TotalBalanceDisplayRegular{
+    color: black;
+}
+
+.TotalBalanceDisplayPositive{
+    color: rgb(16, 90, 16);
+}
+
+.TotalBalanceDisplayNegative{
+    color: red
+}
+
+.settleUpMessage{
+    font-size: 1.2rem;
+}
+
+.settleUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 1%;    
+    min-width: 50px;
+    cursor: pointer;
+}
+
+.settleUp:hover{
+    background-color: rgb(180, 174, 174);
+}
