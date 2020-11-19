@@ -1,7 +1,6 @@
 const authenticateAndUpdateUserData = (oldState, data) => {
     let state = { ...oldState };
     let { _id, roomName } = data.user;
-
     localStorage.setItem('userID', _id);
     localStorage.setItem('roomName', roomName);
 
@@ -40,8 +39,19 @@ const checkAuthState = (oldState, data) => {
     return state;
 }
 
+
+const clearUserRoom = (oldState, data) => {
+    let state = { ...oldState };
+
+    localStorage.removeItem('roomName');
+    oldState.roomName = null;
+
+    return state;
+}
+
 export {
     authenticateAndUpdateUserData,
     logoutUserAndDeleteData,
-    checkAuthState
+    checkAuthState,
+    clearUserRoom
 }

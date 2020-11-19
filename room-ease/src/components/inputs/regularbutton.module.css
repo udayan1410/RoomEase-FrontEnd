@@ -1,12 +1,12 @@
 .Button{
-    width: 75%;
+    width: 46%;
     height: 40px;
     margin: 15px;
     font-size: 1.2rem;
     color: white;
     border-radius: 5px;
     border: 1px solid #1C8EF9;
-    box-shadow: 1px 1px 4px black;
+    box-shadow: 1px 1px 4px black;    
 }
 
 .ButtonEnabled{
@@ -31,6 +31,11 @@
     border: 0px;
 }
 
+.ButtonDisabled:hover{
+    background-color: gray;
+    cursor:auto;
+    border: 0px;
+}
 
 .ButtonDanger{
     background-color: rgb(168, 12, 12);
@@ -56,3 +61,9 @@
     border: 1px solid rgb(187, 187, 35);
 }
 
+
+@media (max-width: 1000px) {
+    .Button {      
+        width: 75%;
+    }
+  }

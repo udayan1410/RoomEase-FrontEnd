@@ -16,6 +16,7 @@
     font-weight: bold;    
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+    margin: 5px;
 }
 
 .Tab:hover{

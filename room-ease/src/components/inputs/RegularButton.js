@@ -4,14 +4,7 @@ import * as classes from './regularbutton.module.css';
 
 const RegularButton = props => {
 
-    let buttonClasses = [classes.Button];
-
-    if (props.disabled)
-        buttonClasses.push(classes.ButtonDisabled);
-
-    else {
-        buttonClasses.push(classes.ButtonEnabled);
-    }
+    let buttonClasses = [classes.Button, props.extraStyles];
 
     if (props.type === "danger") {
         buttonClasses.push(classes.ButtonDanger);
@@ -19,6 +12,13 @@ const RegularButton = props => {
 
     if (props.type === "warning") {
         buttonClasses.push(classes.ButtonWarning);
+    }
+
+    if (props.disabled)
+        buttonClasses.push(classes.ButtonDisabled);
+
+    else {
+        buttonClasses.push(classes.ButtonEnabled);
     }
 
     return (
