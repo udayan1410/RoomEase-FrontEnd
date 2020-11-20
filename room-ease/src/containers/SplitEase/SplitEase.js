@@ -8,6 +8,7 @@ import * as SplitEaseClientRoutes from '../../constants/ClientRoutes'
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import Tabs from '../../components/Tabs/Tabs';
+
 import { Route, Link } from 'react-router-dom'
 import SplitEaseFeed from './SplitEaseFeed/SplitEaseFeed';
 import SpliteaseExpenses from './SplitEaseExpenses/SplitEaseExpenses';
@@ -15,12 +16,14 @@ import Auxillary from '../../hoc/Auxillary';
 import addIcon from '../../assets/addIcon.png';
 import AddExpense from './AddExpense/AddExpense'
 
+
 class SplitEase extends Component {
 
     state = {
         userID: null,
         totalBalance: null,
         visibilityStatus: false,
+
     }
 
     fetchSplitWiseData = async (userID) => {
@@ -37,8 +40,8 @@ class SplitEase extends Component {
     }
 
     componentDidMount() {
-        this.buttonVisibility();
 
+   this.buttonVisibility();
         if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchSplitWiseData(this.props.userID))
     }
@@ -48,8 +51,7 @@ class SplitEase extends Component {
     }
 
     componentDidUpdate() {
-        this.buttonVisibility();
-
+       this.buttonVisibility();
         if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchSplitWiseData(this.props.userID))
     }
@@ -66,6 +68,7 @@ class SplitEase extends Component {
                 path={SplitEaseClientRoutes.SPLIT_EASE_ADD_EXPENSE}
                 component={() => <AddExpense fetchSplitWiseData={this.fetchSplitWiseData} />}
             />
+
         </Auxillary>);
 
         let renderHeader = () => {
@@ -79,7 +82,9 @@ class SplitEase extends Component {
                 SplitWiseStatusTextClasses.push(classes.SplitwiseStatusTextPositive);
             }
             else {
+
                 statusText = `You owe $${Math.abs(this.state.totalBalance)}`
+
                 splitWiseImage = downvote
                 SplitWiseStatusTextClasses.push(classes.SplitwiseStatusTextNegative);
             }
@@ -103,6 +108,7 @@ class SplitEase extends Component {
         return (
             <div className={classes.Container}>
                 <Tabs tabsList={tabsList} url={this.props.match.url} />
+
                 <div className={classes.Header}>
                     <h1>SplitEase</h1>
                     {this.state.visibilityStatus ? <Link to={SplitEaseClientRoutes.SPLIT_EASE_ADD_EXPENSE} style={{ textDecoration: "none" }}>
@@ -113,7 +119,9 @@ class SplitEase extends Component {
                 {ROUTES}
             </div>
         )
+
     }
+
 }
 
 let mapStateToProps = state => {

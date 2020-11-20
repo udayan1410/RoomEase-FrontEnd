@@ -33,7 +33,8 @@ class SplitEaseFeed extends Component {
             let expenseData = (await Axios.get(`${SplitEaseServerRoutes.SPLIT_EASE_GET_EXPENSE_DETAILS}?expenseID=${id}`)).data.data;
             this.setState({ expenseData: expenseData })
 
-            if (expenseData.expenseType !== "payback")
+         if (expenseData.expenseType !== "payback")
+
                 this.setState({ modalOpen })
         }
         else

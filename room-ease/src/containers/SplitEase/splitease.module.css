@@ -9,6 +9,7 @@
     padding: 2%;    
 }
 
+
 .Header{
     display: flex;
     align-items: center;
@@ -18,7 +19,6 @@
 .Header h1{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 
 .SplitwiseStatus{
     display: flex;        
@@ -69,12 +69,10 @@
 }
 
 
-
 @media (max-width: 1000px) {
     .SplitwiseStatus img{      
         max-width: 65px;  
         padding: 10px;
     }
   }
-
 
