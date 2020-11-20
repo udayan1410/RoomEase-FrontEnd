@@ -5,7 +5,25 @@ import * as classes from './textinput.module.css';
 const TextInput = props => {
   let inputArea = null;
 
-  if (props.type === "textarea")
+
+  if (props.type === "number") {
+
+    inputArea = (
+
+      <input
+        min={1}
+        onChange={(event) => props.onChange(event, "number")}
+        placeholder={props.hint}
+        type="number"
+        value={props.value}
+        className={classes.Number}
+      >
+
+      </input>
+    )
+  }
+
+  else if (props.type === "textarea")
     inputArea = (
       <textarea
         rows="4"

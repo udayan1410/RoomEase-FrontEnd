@@ -35,4 +35,5 @@ export const ROOM_MYROOM = "/room";
 //split money
 export const SPLIT_EASE_URL = "/splitease"
 export const SPLIT_EASE_EXPENSE = "/expenses"
+export const SPLIT_EASE_ADD_EXPENSE = SPLIT_EASE_URL + "/addExpense"
 export const SPLIT_EASE_FEED = "/feed"

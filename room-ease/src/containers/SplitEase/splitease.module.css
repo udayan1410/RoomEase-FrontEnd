@@ -9,6 +9,17 @@
     padding: 2%;    
 }
 
+.Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;    
+}
+
+.Header h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
 .SplitwiseStatus{
     display: flex;        
     background-color: rgb(151, 147, 147);    
@@ -43,6 +54,21 @@
 }
 
 
+.Icon{
+    width: 40px;
+    height: 40px;
+    float: right;
+    padding: 2px;
+    transition-duration: 0.2s;
+}
+
+.Icon:hover{
+    background-color: rgba(0,0,0,15%);
+    transform: scale(1.2);
+    border-radius: 50%;    
+}
+
+
 
 @media (max-width: 1000px) {
     .SplitwiseStatus img{      
@@ -50,3 +76,5 @@
         padding: 10px;
     }
   }
+
+
