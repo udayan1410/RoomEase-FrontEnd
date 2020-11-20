@@ -16,6 +16,16 @@
     width: 85%;
 }
 
+.Number{
+    width: 25%;
+    height: 30px;
+    font-size: 1.1rem;
+    margin: 10px; 
+    padding-left: 15px; 
+    padding: 10px;
+    border: 1px solid #1C8EF9;
+}
+
 .title{
     font-size: 1rem;
     text-align: center;

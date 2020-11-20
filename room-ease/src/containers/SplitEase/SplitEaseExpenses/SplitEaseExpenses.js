@@ -13,7 +13,7 @@ class SpliteaseExpenses extends Component {
 
     fetchExpenses = async (userID) => {
         let { balanceMap } = (await Axios.get(`${SplitEaseServerRoutes.SPLIT_EASE_GET_EXPENSES}?userID=${userID}`)).data;
-        // console.log(balanceMap);
+
         let expenses = [];
 
         for (let balance in balanceMap) {
@@ -41,24 +41,24 @@ class SpliteaseExpenses extends Component {
         }
 
         let settleUpResponse = (await Axios.post(SplitEaseServerRoutes.SPLIT_EASE_SETTLE_IP, paybackExpenseObj)).data;
-        if (settleUpResponse.Result === "Success")
+        if (settleUpResponse.Result === "Success") {
             this.fetchExpenses(to);
-
+            this.props.fetchSplitWiseData(this.props.userID);
+        }
 
 
     }
 
     componentDidMount() {
-        if (this.props.userID && !this.state.userID) {
+        if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchExpenses(this.props.userID))
-        }
     }
 
     componentDidUpdate() {
-        if (this.props.userID && !this.state.userID) {
+        if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchExpenses(this.props.userID))
-        }
     }
+
 
     render() {
         let renderUserExpenseList = () => {
