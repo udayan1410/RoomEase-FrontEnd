@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import RegularButton from "../../components/inputs/RegularButton";
+import TextInput from "../../components/inputs/TextInput";
+import { Link, withRouter } from "react-router-dom";
 import * as classes from './userprofile.module.css';
 import axios from 'axios';
-import { USER_PROFILE_URL} from '../../constants/ServerRoutes';
+import { USER_PROFILE_URL,MEMBERS_OF_ROOM_URL } from '../../constants/ServerRoutes';
 import { withLayout } from '../../hoc/Layout/withLayout'
 
 class UserProfile extends Component{

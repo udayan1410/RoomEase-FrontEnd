@@ -1,4 +1,4 @@
-export const BASE_URL = "http://10.0.0.70:8080";
+export const BASE_URL = "http://localhost:8080";
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
@@ -14,7 +14,7 @@ export const ACTIVITY_URL = BASE_URL + "/room/feed";
 export const CHAT_URL = BASE_URL + "/room/chat";
 export const ROOM_ADD_URL = BASE_URL + "/room/add";
 
-//TASK URLS 
+//TASK URLS
 export const TASK_URL = BASE_URL + "/task";
 export const TASK_CREATE_URL = BASE_URL + '/task/create';
 
@@ -22,6 +22,10 @@ export const TASK_CREATE_URL = BASE_URL + '/task/create';
 // Profile url
 export const USER_PROFILE_URL = BASE_URL + '/profile';
 
+//Notes url
+export const NOTES_URL = BASE_URL + '/notes'
+export const NOTES_CREATION_URL = BASE_URL + '/notes/create';
+export const SELF_NOTES_URL = BASE_URL + '/notes/selfnotes';
 
 //Split Ease
 export const SPLITEASE_URL = BASE_URL + "/splitease"
@@ -36,4 +40,5 @@ export const SPLIT_EASE_SETTLE_IP = SPLITEASE_URL + "/settleup";
 
 
 
+export const ROOM_NOTES_URL = BASE_URL + '/notes/roomnotes';
 

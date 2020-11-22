@@ -31,6 +31,13 @@ export const USER_PROFILE_URL = "/profile";
 //room
 export const ROOM_MYROOM = "/room";
 
+//notes
+export const CREATE_NOTES_URL = "/notes/create";
+export const SINGLE_NOTE_URL = "/notes/:noteid";
+export const NOTES_URL = "/notes";
+
+export const VIEW_ROOM_NOTES_URL = "/notes/room";
+export const VIEW_SELF_NOTES_URL = "notes/selfnotes";
 
 //split money
 export const SPLIT_EASE_URL = "/splitease"

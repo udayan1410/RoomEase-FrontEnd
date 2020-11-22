@@ -17,8 +17,6 @@ class Homepage extends Component {
         roomName: this.props.match.params.roomName
     }
 
-
-
     render() {
 
         let tabsList = [
