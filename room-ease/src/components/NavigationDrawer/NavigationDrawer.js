@@ -33,7 +33,7 @@ const NavigationDrawer = props => {
         {
             image: notesImage,
             text: "Notes",
-            link: "/"
+            link: "/notes"
         },
         {
             image: inviteImage,

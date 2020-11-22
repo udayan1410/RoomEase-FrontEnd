@@ -1,0 +1,61 @@
+.Container{
+    display: flex;        
+    justify-content: space-around;
+    flex-wrap: wrap;    
+}
+
+.MainItem{
+    display: flex; 
+    padding: 5px; 
+    margin: 8px; 
+    transition-duration: 0.2s; 
+}
+
+.ColorShade{    
+    width: 20px;
+    padding: 5px; 
+    margin: 8px;         
+}
+
+.ListItem{
+    display: flex;  
+    flex-direction: column;    
+    cursor: pointer;
+    background-color: aliceblue;
+    overflow: hidden;
+    min-width: 250px;
+    max-width: 250px;     
+    max-height: 100px;     
+    min-height: 100px;     
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px black;  
+    padding: 5px; 
+    margin: 8px;             
+}
+
+.MainItem:hover{
+    transform: scale(1.1);   
+}
+
+
+
+.TaskName{
+    margin: 5px;
+    font-weight: bolder;
+    font-size: larger;
+    color:rgb(24, 82, 105);
+    text-decoration: underline;    
+}
+
+.CreatedOn{        
+    font-size: small;       
+    text-align: end;    
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.Link{
+    cursor:auto;
+}

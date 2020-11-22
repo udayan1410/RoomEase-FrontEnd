@@ -76,7 +76,6 @@ class Login extends Component {
                     <TextInput hint="Enter Password" type="password" onChange={this.handlePassword} />
 
                     <RegularButton text="SUBMIT" onClick={this.authenticateUser} />
-
                     {erorrMessage}
                     <p className="forgot-password text-right">
                         <Link to={SIGNUP_URL}>Don't have an account? Signup here</Link>

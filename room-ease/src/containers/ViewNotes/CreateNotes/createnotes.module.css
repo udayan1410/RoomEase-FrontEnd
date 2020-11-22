@@ -1,0 +1,33 @@
+
+.note{
+    
+    font-size: large;
+    background-color: white; 
+    width: 80vw;
+    height: 50vh;
+    margin : 20px auto;
+    
+    /* margin-top: 10%; */
+ }
+
+.title{
+    font-size: x-large;
+    margin-top:6%;
+    width: 60%;
+}
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
+}
+
+.button1{
+    
+    display: inline-block;
+}
+
+.button2{
+    display: inline-block;
+
+}
+
+
