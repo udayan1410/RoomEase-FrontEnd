@@ -50,7 +50,7 @@ class Layout extends Component {
                     onKeyDown={this.profileStatusHandler}
                 />
 
-                <NavigationDrawer view={this.state.drawerOpen} />
+                <NavigationDrawer view={this.state.drawerOpen} closeMenu={this.drawerStatusHandler} />
                 <ProfileMenu view={this.state.profileMenuOpen} />
 
                 <Backdrop

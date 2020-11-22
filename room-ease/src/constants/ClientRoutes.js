@@ -38,3 +38,9 @@ export const NOTES_URL = "/notes";
 
 export const VIEW_ROOM_NOTES_URL = "/notes/room";
 export const VIEW_SELF_NOTES_URL = "notes/selfnotes";
+
+//split money
+export const SPLIT_EASE_URL = "/splitease"
+export const SPLIT_EASE_EXPENSE = "/expenses"
+export const SPLIT_EASE_ADD_EXPENSE = SPLIT_EASE_URL + "/addExpense"
+export const SPLIT_EASE_FEED = "/feed"

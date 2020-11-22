@@ -1,0 +1,16 @@
+.HideSnackbar{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;       
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0, 85%);    
+    color: white;      
+    border-radius: 5px;    
+    transition: ease-in-out;                    
+    transition-delay: -1s;    
+}
+
+.ShowSnackbar{      
+    padding: 18px;      
+ }
+ 

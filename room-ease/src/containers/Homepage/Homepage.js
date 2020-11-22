@@ -18,9 +18,18 @@ class Homepage extends Component {
     }
 
     render() {
+
+        let tabsList = [
+            { name: "Activity", url: ACTIVITY_URL },
+            { name: "Tasks", url: ROOM_ALL_TASKS_URL },
+            { name: "Chat", url: CHAT_URL },
+            { name: "Room", url: ROOM_MYROOM },
+        ]
+
+
         return (
-            <div className={classes.HomePage}>
-                <Tabs url={this.props.match.url}></Tabs>
+            <div className={classes.HomePage} >
+                <Tabs url={this.props.match.url} tabsList={tabsList}></Tabs>
                 <Switch>
                     <Route path={ROOM_ONE_TASK_URL} component={EditTask} />
                     <Route path={this.props.match.path + ROOM_ALL_TASKS_URL} component={Tasks} />

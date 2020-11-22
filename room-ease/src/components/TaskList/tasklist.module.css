@@ -5,9 +5,8 @@
 }
 
 .MainItem{
-    display: flex; 
-    padding: 5px; 
-    margin: 8px; 
+    display: flex;     
+    margin: 5px; 
     transition-duration: 0.2s; 
 }
 
@@ -34,6 +33,7 @@
 
 .MainItem:hover{
     transform: scale(1.1);   
+    cursor: pointer;
 }
 
 .TaskComments{
@@ -63,3 +63,10 @@
 .Link{
     cursor:auto;
 }
+
+
+@media (min-width: 1000px) {
+    .MainItem {              
+        margin: 4px; 
+    }
+  }
