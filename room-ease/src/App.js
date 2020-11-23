@@ -13,7 +13,7 @@ import CreateTask from './containers/Tasks/CreateTask/CreateTask'
 import CreateNotes from './containers/ViewNotes/CreateNotes/CreateNotes'
 import ViewAllNotes from './containers/ViewNotes/AllNotes/AllNotes'
 import EditNote from './containers/ViewNotes/EditNote/EditNote'
-import { USER_PROFILE_URL, LOGIN_URL, SIGNUP_URL, ROOM_JOIN_URL, BASE_URL, ROOM_CREATE_URL, ROOM_HOMEPAGE, TASK_CREATE_URL, CREATE_NOTES_URL, NOTES_URL, SINGLE_NOTE_URL, SPLIT_EASE_URL } from './constants/ClientRoutes';
+import * as ClientRoutes from './constants/ClientRoutes';
 // import Singlenote from './containers/ViewNotes/SingleNote/Singlenote';
 // import } from './constants/ServerRoutes'
 
@@ -24,24 +24,24 @@ class App extends Component {
       <div className={classes.App}>
         <Switch>
           {/* Authentication */}
-          <Route path={LOGIN_URL} component={Login} />
-          <Route path={SIGNUP_URL} component={Signup} />
+          <Route path={ClientRoutes.LOGIN_URL} component={Login} />
+          <Route path={ClientRoutes.SIGNUP_URL} component={Signup} />
 
           {/* Rooms */}
-          <Route path={ROOM_JOIN_URL} component={JoinRoom} />
-          <Route path={ROOM_CREATE_URL} component={CreateRoom} />
-          <Route path={ROOM_HOMEPAGE} component={Homepage} />
+          <Route path={ClientRoutes.ROOM_JOIN_URL} component={JoinRoom} />
+          <Route path={ClientRoutes.ROOM_CREATE_URL} component={CreateRoom} />
+          <Route path={ClientRoutes.ROOM_HOMEPAGE} component={Homepage} />
 
-          <Route path={TASK_CREATE_URL} component={CreateTask} />
-          <Route path={USER_PROFILE_URL} component={UserProfile} />
+          <Route path={ClientRoutes.TASK_CREATE_URL} component={CreateTask} />
+          <Route path={ClientRoutes.USER_PROFILE_URL} component={UserProfile} />
 
-          <Route path={CREATE_NOTES_URL} component={CreateNotes} />
-          <Route path={SINGLE_NOTE_URL} component={EditNote} />
-          <Route path={NOTES_URL} component={ViewAllNotes} />
+          <Route path={ClientRoutes.CREATE_NOTES_URL} component={CreateNotes} />
+          <Route path={ClientRoutes.SINGLE_NOTE_URL} component={EditNote} />
+          <Route path={ClientRoutes.NOTES_URL} component={ViewAllNotes} />
 
-          <Route path={SPLIT_EASE_URL} component={SplitEase} />
+          <Route path={ClientRoutes.SPLIT_EASE_URL} component={SplitEase} />
 
-          <Route path={BASE_URL} component={Login} />
+          <Route path={ClientRoutes.BASE_URL} component={Login} />
         </Switch>
       </div>
     );

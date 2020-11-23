@@ -15,24 +15,24 @@ const NotesList = props => {
                 let Title = note.title;
                 if (Title.length > MAX_LENGTH)
                     Title = Title.slice(0, MAX_LENGTH) + "...";
-                
-                
+
+
                 return (
                     <Link
-                    to={`${NOTES_URL}/${note._id}`}
-                    key={note._id}
-                    title={note.title}
-                    note={note.body}
-                    style={{ textDecoration: "none" }}
-                    className={classes.Link}
-                >
+                        to={`${NOTES_URL}/update/${note._id}`}
+                        key={note._id}
+                        title={note.title}
+                        note={note.body}
+                        style={{ textDecoration: "none" }}
+                        className={classes.Link}
+                    >
                         <div className={classes.MainItem}>
                             <div className={classes.ListItem}>
                                 <p className={classes.TaskName}>{Title}</p>
                                 <p className={classes.TaskComments}>{shortNote}</p>
                             </div>
                         </div>
-                   </Link> 
+                    </Link>
                 )
             })}
         </div>

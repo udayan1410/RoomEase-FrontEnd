@@ -41,7 +41,7 @@ class SplitEase extends Component {
 
     componentDidMount() {
 
-   this.buttonVisibility();
+        this.buttonVisibility();
         if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchSplitWiseData(this.props.userID))
     }
@@ -51,7 +51,7 @@ class SplitEase extends Component {
     }
 
     componentDidUpdate() {
-       this.buttonVisibility();
+        this.buttonVisibility();
         if (this.props.userID && !this.state.userID)
             this.setState({ userID: this.props.userID }, () => this.fetchSplitWiseData(this.props.userID))
     }
