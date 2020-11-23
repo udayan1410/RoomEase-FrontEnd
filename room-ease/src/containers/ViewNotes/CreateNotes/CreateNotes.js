@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import * as classes from './createnotes.module.css';
 import Axios from 'axios';
-import { connect } from 'react-redux';
-
 import { withLayout } from '../../../hoc/Layout/withLayout'
 import RegularButton from '../../../components/inputs/RegularButton';
-import TextInput from '../../../components/inputs/TextInput';
 import { NOTES_CREATION_URL } from '../../../constants/ServerRoutes';
 
 class CreateNotes extends Component {
@@ -30,7 +27,7 @@ class CreateNotes extends Component {
         this.uploadNote()
     }
     uploadNote = async () => {
-        if (this.state.note.length != 0 && this.state.title.length != 0) {
+        if (this.state.note.length !== 0 && this.state.title.length !== 0) {
 
 
             let notesModel = {

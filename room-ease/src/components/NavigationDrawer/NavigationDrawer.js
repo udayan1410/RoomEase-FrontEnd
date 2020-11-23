@@ -19,34 +19,48 @@ const NavigationDrawer = props => {
     else
         viewDrawer.push(classes.HideContainer);
 
-    let menuItems = [
-        {
-            image: roomImage,
-            text: "My Room",
-            link: `/room/${props.roomName}/activity`
-        },
-        {
+
+    let constructMenuItems = () => {
+        let menuItems = [];
+
+        let roomName = localStorage.getItem("roomName");
+
+        if (roomName != "null") {
+            menuItems.push({
+                image: roomImage,
+                text: "My Room",
+                link: `/room/${props.roomName}/activity`
+            });
+        }
+
+        menuItems.push({
             image: splitMoneyImage,
             text: "Split Ease",
             link: URLS.SPLIT_EASE_URL + URLS.SPLIT_EASE_FEED
-        },
-        {
+        });
+
+        menuItems.push({
             image: notesImage,
             text: "Notes",
             link: URLS.NOTES_URL + URLS.VIEW_SELF_NOTES_URL
-        },
-        {
-            image: inviteImage,
-            text: "Invite / Join",
-            link: "/room/join"
-        }
-    ];
+        });
+
+        if (roomName === "null")
+            menuItems.push({
+                image: inviteImage,
+                text: "Invite / Join",
+                link: "/room/join"
+            });
+
+        return menuItems;
+
+    }
 
     return (
         <div className={viewDrawer.join(' ')}>
             <h1>Select an option</h1>
             <ul className={classes.list}>
-                {menuItems.map(item =>
+                {constructMenuItems().map(item =>
                     <Link to={item.link} key={item.text} className={classes.Link} onClick={props.closeMenu}>
                         <li className={classes.listItem}>
                             <img src={item.image} className={classes.image} alt={item.text} />

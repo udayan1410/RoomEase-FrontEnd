@@ -52,7 +52,6 @@ class EditNote extends Component {
     }
     deleteNote = async () => {
         let taskDeletionStatus = (await Axios.delete(`${NOTES_URL}?noteid=${this.state._id}&userID=${localStorage.getItem("userID")}`));
-        console.log("Status", taskDeletionStatus);
         this.props.history.goBack();
     }
 
@@ -67,7 +66,6 @@ class EditNote extends Component {
             userID: this.state.userID,
         }
         let noteUpdationStatus = (await Axios.patch(NOTES_URL, notesModel)).data;
-        console.log(noteUpdationStatus);
         this.props.history.goBack();
     }
     componentDidMount() {

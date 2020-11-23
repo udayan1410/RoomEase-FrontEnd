@@ -14,8 +14,8 @@ import CreateNotes from './containers/ViewNotes/CreateNotes/CreateNotes'
 import ViewAllNotes from './containers/ViewNotes/AllNotes/AllNotes'
 import EditNote from './containers/ViewNotes/EditNote/EditNote'
 import * as ClientRoutes from './constants/ClientRoutes';
-// import Singlenote from './containers/ViewNotes/SingleNote/Singlenote';
-// import } from './constants/ServerRoutes'
+import RoomRouteBlock from './hoc/RouteBlock/RoomRouteBlock';
+import UserRouteBlock from './hoc/RouteBlock/UserRouteBlock'
 
 class App extends Component {
 
@@ -28,18 +28,22 @@ class App extends Component {
           <Route path={ClientRoutes.SIGNUP_URL} component={Signup} />
 
           {/* Rooms */}
-          <Route path={ClientRoutes.ROOM_JOIN_URL} component={JoinRoom} />
-          <Route path={ClientRoutes.ROOM_CREATE_URL} component={CreateRoom} />
-          <Route path={ClientRoutes.ROOM_HOMEPAGE} component={Homepage} />
+          <UserRouteBlock path={ClientRoutes.ROOM_JOIN_URL} component={JoinRoom} />
+          <UserRouteBlock path={ClientRoutes.ROOM_CREATE_URL} component={CreateRoom} />
+          <RoomRouteBlock path={ClientRoutes.ROOM_HOMEPAGE} Component={Homepage} />
 
-          <Route path={ClientRoutes.TASK_CREATE_URL} component={CreateTask} />
-          <Route path={ClientRoutes.USER_PROFILE_URL} component={UserProfile} />
 
-          <Route path={ClientRoutes.CREATE_NOTES_URL} component={CreateNotes} />
-          <Route path={ClientRoutes.SINGLE_NOTE_URL} component={EditNote} />
-          <Route path={ClientRoutes.NOTES_URL} component={ViewAllNotes} />
+          {/* Tasks */}
+          <UserRouteBlock path={ClientRoutes.TASK_CREATE_URL} component={CreateTask} />
+          <UserRouteBlock path={ClientRoutes.USER_PROFILE_URL} component={UserProfile} />
 
-          <Route path={ClientRoutes.SPLIT_EASE_URL} component={SplitEase} />
+          {/* Notes */}
+          <UserRouteBlock path={ClientRoutes.CREATE_NOTES_URL} component={CreateNotes} />
+          <UserRouteBlock path={ClientRoutes.SINGLE_NOTE_URL} component={EditNote} />
+          <UserRouteBlock path={ClientRoutes.NOTES_URL} component={ViewAllNotes} />
+
+          {/* SplitEase */}
+          <UserRouteBlock path={ClientRoutes.SPLIT_EASE_URL} component={SplitEase} />
 
           <Route path={ClientRoutes.BASE_URL} component={Login} />
         </Switch>
