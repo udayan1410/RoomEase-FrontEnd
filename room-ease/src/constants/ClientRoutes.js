@@ -32,12 +32,12 @@ export const USER_PROFILE_URL = "/profile";
 export const ROOM_MYROOM = "/room";
 
 //notes
-export const CREATE_NOTES_URL = "/notes/create";
-export const SINGLE_NOTE_URL = "/notes/:noteid";
 export const NOTES_URL = "/notes";
+export const CREATE_NOTES_URL = NOTES_URL + "/create";
+export const SINGLE_NOTE_URL = NOTES_URL + "/update/:noteid";
 
-export const VIEW_ROOM_NOTES_URL = "/notes/room";
-export const VIEW_SELF_NOTES_URL = "notes/selfnotes";
+export const VIEW_ROOM_NOTES_URL = "/roomnotes";
+export const VIEW_SELF_NOTES_URL = "/selfnotes";
 
 //split money
 export const SPLIT_EASE_URL = "/splitease"

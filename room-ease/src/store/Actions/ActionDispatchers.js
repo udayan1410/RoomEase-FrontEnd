@@ -13,8 +13,8 @@ const authenticateAndUpdateUserData = (oldState, data) => {
 const logoutUserAndDeleteData = (oldState, data) => {
     let state = { ...oldState };
 
-    localStorage.removeItem('userID');
-    localStorage.removeItem('roomName');
+    localStorage.setItem('userID', null);
+    localStorage.setItem('roomName', null);
 
     oldState.userID = null;
     oldState.roomName = null;
@@ -43,7 +43,7 @@ const checkAuthState = (oldState, data) => {
 const clearUserRoom = (oldState, data) => {
     let state = { ...oldState };
 
-    localStorage.removeItem('roomName');
+    localStorage.setItem('roomName', null);
     oldState.roomName = null;
 
     return state;

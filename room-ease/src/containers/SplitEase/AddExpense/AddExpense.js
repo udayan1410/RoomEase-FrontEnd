@@ -25,7 +25,7 @@ class AddExpense extends Component {
             let url = MEMBERS_OF_ROOM_URL + "?roomname=" + roomName;
             let members = (await Axios.get(url)).data.Members;
 
-            members = members.filter(member => member._id != this.props.userID)
+            members = members.filter(member => member._id !== this.props.userID)
 
             let selectedUser = members.length > 0 ? members[0].userName : "";
 
@@ -123,8 +123,6 @@ class AddExpense extends Component {
         else {
             members = <p>No members in your room</p>
         }
-
-        console.log(this.props);
 
         return (
             <div>

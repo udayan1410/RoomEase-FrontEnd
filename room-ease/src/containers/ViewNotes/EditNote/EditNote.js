@@ -33,7 +33,6 @@ class EditNote extends Component {
         let noteid = this.props.match.params.noteid
         let url = NOTES_URL + "?noteid=" + noteid;
         let taskModel = (await Axios.get(url)).data;
-        console.log("Note Content", taskModel.notes[0])
         let { body, title, shared, createdOn, createdBy, roomName, _id } = taskModel.notes[0];
         this.setState(
             {
@@ -52,8 +51,7 @@ class EditNote extends Component {
         this.setState({ shared: !this.state.shared })
     }
     deleteNote = async () => {
-        let taskDeletionStatus = (await Axios.delete(`${NOTES_URL}?noteid=${this.state.noteID}&userID=${localStorage.getItem("userID")}`));
-        console.log("Status", taskDeletionStatus);
+        let taskDeletionStatus = (await Axios.delete(`${NOTES_URL}?noteid=${this.state._id}&userID=${localStorage.getItem("userID")}`));
         this.props.history.goBack();
     }
 
@@ -68,7 +66,6 @@ class EditNote extends Component {
             userID: this.state.userID,
         }
         let noteUpdationStatus = (await Axios.patch(NOTES_URL, notesModel)).data;
-        console.log(noteUpdationStatus);
         this.props.history.goBack();
     }
     componentDidMount() {
@@ -82,9 +79,9 @@ class EditNote extends Component {
                 <div className={classes.buttoncontainer}>
                     <div className={classes.button2}>
                         <p>Share with roommates:<input type="checkbox" checked={this.state.shared} onChange={this.handleSharing} /></p>
-                        <RegularButton onClick={this.updateNote} text="Update note"></RegularButton>
                     </div>
                 </div>
+                <RegularButton onClick={this.updateNote} text="Update note"></RegularButton>
                 <div style={{ width: 250, justifyContent: "center" }}>
                     <RegularButton onClick={this.deleteNote} text="Delete note"></RegularButton>
                 </div>

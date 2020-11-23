@@ -4,7 +4,7 @@ import Tabs from '../../components/Tabs/Tabs';
 import classes from './homepage.module.css';
 import Tasks from '../Tasks/Tasks';
 import Activity from '../Activity/Activity';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { ROOM_ALL_TASKS_URL, ROOM_ONE_TASK_URL, ACTIVITY_URL, CHAT_URL, ROOM_MYROOM } from '../../constants/ClientRoutes';
 import EditTask from '../../containers/Tasks/EditTask/EditTask';
 import Chat from '../Chat/Chat';
@@ -44,4 +44,4 @@ class Homepage extends Component {
 
 }
 
-export default withLayout(Homepage);
+export default withRouter(withLayout(Homepage));
