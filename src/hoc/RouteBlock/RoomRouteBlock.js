@@ -9,7 +9,7 @@ const RoomRouteBlock = ({ path, Component }) => {
     let componentToRender = Component;
 
 
-    if (localStorage.getItem("userID") == "null")
+    if (localStorage.getItem("userID") === "null")
         componentToRender = Login;
 
     else if (localStorage.getItem("roomName") === "null")

@@ -25,7 +25,7 @@ const NavigationDrawer = props => {
 
         let roomName = localStorage.getItem("roomName");
 
-        if (roomName != "null") {
+        if (roomName !== "null") {
             menuItems.push({
                 image: roomImage,
                 text: "My Room",
