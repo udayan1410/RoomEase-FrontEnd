@@ -77,7 +77,8 @@ class AddExpense extends Component {
 
     expenseValueChangedHandler = (event) => {
         let expenseAmount = event.target.value;
-        this.setState({ expenseAmount })
+        if (expenseAmount.length <= 4)
+            this.setState({ expenseAmount })
     }
 
     expenseDescriptionChangedHandler = (event) => {
@@ -120,9 +121,8 @@ class AddExpense extends Component {
                 removeFromList={this.removeFromList}
             ></MemberSelect>)
         }
-        else {
-            members = <p>No members in your room</p>
-        }
+        else
+            members = <p>Room members not found</p>
 
         return (
             <div>

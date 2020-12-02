@@ -1,13 +1,8 @@
 
-.note{
-    
+.note{    
     font-size: large;
-    background-color: white; 
-    width: 80vw;
-    height: 50vh;
-    margin : 20px auto;
-    
-    /* margin-top: 10%; */
+    background-color: white;     
+    width: 60%;        
  }
 
 .title{
@@ -18,6 +13,12 @@
 .buttoncontainer{
     display: flex;
     justify-content: center;
+}
+
+.UpdateButton{    
+    max-width: 60%;
+    width: 60%;
+    margin: auto;
 }
 
 .button1{

@@ -109,8 +109,6 @@ class Room extends Component {
             else return null;
         }
 
-
-
         return (
             <div className={classes.Container}>
                 <div className={classes.LeaveRoom}>

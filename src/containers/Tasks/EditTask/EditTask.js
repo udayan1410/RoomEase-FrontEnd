@@ -109,16 +109,16 @@ class EditTask extends Component {
         this.setState({ columns })
     }
 
-    changedTime = (event, type) => {
-        let time = parseInt(event.target.value);
+    changedTime = (time, type) => {
+
         if (type === "hours")
             this.setState({ hours: time })
         else
             this.setState({ minutes: time })
     }
 
-    changedtimePeriod = (event) => {
-        this.setState({ timePeriod: event.target.value })
+    changedtimePeriod = (timePeriod) => {
+        this.setState({ timePeriod: timePeriod })
     }
 
     addToList = (userName) => {

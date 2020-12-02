@@ -3,9 +3,7 @@
     
     font-size: large;
     background-color: white; 
-    width: 80vw;
-    height: 50vh;
-    margin : 20px auto;
+    width: 60%;   
     
     /* margin-top: 10%; */
  }
@@ -18,6 +16,11 @@
 .buttoncontainer{
     display: flex;
     justify-content: center;
+}
+
+.UpdateButton{    
+    max-width: 60%;
+    margin: auto;
 }
 
 .button1{

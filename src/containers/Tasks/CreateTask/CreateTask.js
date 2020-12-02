@@ -95,8 +95,7 @@ class CreateTask extends Component {
 
     }
 
-    changedTime = (event, type) => {
-        let time = parseInt(event.target.value);
+    changedTime = (time, type) => {
         if (type === "hours") {
             this.setState({ hours: time })
         }
@@ -105,8 +104,8 @@ class CreateTask extends Component {
         }
     }
 
-    changedtimePeriod = (event) => {
-        this.setState({ timePeriod: event.target.value })
+    changedtimePeriod = (timePeriod) => {
+        this.setState({ timePeriod: timePeriod })
     }
 
     addToList = (userName) => {
@@ -193,6 +192,7 @@ class CreateTask extends Component {
             ></MemberSelect>)
         }
 
+
         return (
             <div className={classes.Form} >
                 <h2>Create Task</h2>
@@ -206,8 +206,13 @@ class CreateTask extends Component {
                     hours={`${this.state.hours}`}
                     minutes={`${this.state.minutes}`}
                 />
+
                 {members}
+
+
                 <RegularButton text={"Submit"} onClick={this.submittedCreateTask} />
+
+
             </div>
         )
     }

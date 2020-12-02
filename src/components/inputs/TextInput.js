@@ -9,7 +9,6 @@ const TextInput = props => {
   if (props.type === "number") {
 
     inputArea = (
-
       <input
         min={1}
         onChange={(event) => props.onChange(event, "number")}
@@ -22,6 +21,7 @@ const TextInput = props => {
       </input>
     )
   }
+
 
   else if (props.type === "textarea")
     inputArea = (

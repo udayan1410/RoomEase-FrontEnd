@@ -6,10 +6,8 @@ import Login from '../../containers/Account/Login/Login';
 const UserRouteBlock = ({ path, component }) => {
 
     let componentToRender = component;
-    console.log("In block ", localStorage.getItem("userID"));
 
     if (localStorage.getItem("userID") == "null") {
-        console.log("In block");
         componentToRender = Login;
     }
 
