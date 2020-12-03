@@ -47,6 +47,7 @@ class UserProfile extends Component {
 
                 <div className={classes.userinfo}>
                     {Object.keys(this.state.userInfo).map((key) => {
+                        console.log(key);
                         return (
                             <div className={classes.info} key={key}>
                                 <h3 className={classes.category}>{key} :</h3>

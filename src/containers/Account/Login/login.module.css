@@ -15,3 +15,15 @@
 .error{
     color: red;
 }
+
+h1{
+    text-align: center       
+}
+
+@media (max-width: 1000px) {
+    .Form {      
+        min-width: 90%;
+    }
+    
+  }
+

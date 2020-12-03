@@ -1,7 +1,4 @@
-
-
-.user{   
-    /* background-color: aquamarine; */
+.user{       
     margin: 6% auto;
     width: fit-content;
     justify-content: center;
@@ -36,7 +33,7 @@
     border-width: 0.5px;
     border-color: black;
     border-radius: 100%;
-
+    
 }
 .profileimg{
     width:100%;
@@ -53,11 +50,12 @@
 
 .userinfo{
     margin: 0 auto;
-    width: 80%;
+    width: auto;
+    max-width: 700px;
     box-shadow: 3px 3px 5px black;   
     border-radius: 5px;
     justify-content: center;
-    background-color: rgb(56, 177, 224);
+    background-color: rgb(56, 177, 224);    
 }
 .info{
     display: flex;
@@ -66,6 +64,7 @@
     background-color: white;
     border-radius: 5px;
     margin-bottom: 5px;
+
 }
 .category{
    
@@ -80,3 +79,11 @@
     border-radius: 5px;
     background-color: white;
 }
+
+@media (max-width: 1000px) {
+    .userinfo{    
+        margin: 0 auto;
+        width: 80%;        
+    }
+    
+  }
