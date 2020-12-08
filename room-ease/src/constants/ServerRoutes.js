@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:8080";
+// export const BASE_URL = "http://localhost:8080";
+export const BASE_URL = "https://quiet-cliffs-40319.herokuapp.com/"
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
