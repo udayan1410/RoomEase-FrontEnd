@@ -1,0 +1,15 @@
+.Container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.HourDisplay{
+    width: 40px;
+    height: 30px;    
+}
+
+.AM{
+    height: 30px;
+}

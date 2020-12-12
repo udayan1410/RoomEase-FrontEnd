@@ -1,0 +1,42 @@
+.Container{
+    margin: 10px;    
+}
+
+.Input{
+    width: 45%;
+    height: 30px;
+    font-size: 1.1rem;
+    margin: 10px; 
+    padding-left: 15px; 
+    padding: 10px;
+    border: 1px solid #1C8EF9;
+}
+
+.Textarea{
+    width: 85%;
+}
+
+.Number{
+    width: 45%;
+    height: 30px;
+    font-size: 1.1rem;
+    margin: 10px; 
+    padding-left: 15px; 
+    padding: 10px;
+    border: 1px solid #1C8EF9;
+}
+
+.title{
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .Input {      
+        width: 75%;
+    }
+    
+    .Number{
+        width: 75%;       
+    }
+  }

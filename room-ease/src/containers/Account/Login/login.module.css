@@ -1,0 +1,29 @@
+.Form{
+    background-color: whitesmoke;    
+    margin-top: 5%;        
+    min-width: 450px;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 3px 3px 5px black;   
+    border-radius: 5px;
+}
+.signin{
+    text-align: center;
+    font-family: 'Arial';
+    font-size: 1.6rem;
+}
+.error{
+    color: red;
+}
+
+
+h1{
+    text-align: center       
+}
+
+@media (max-width: 1000px) {
+    .Form {      
+        min-width: 90%;
+    }
+    
+}

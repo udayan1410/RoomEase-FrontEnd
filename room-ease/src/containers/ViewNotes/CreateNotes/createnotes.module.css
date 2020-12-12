@@ -1,0 +1,36 @@
+
+.note{    
+    font-size: large;
+    background-color: white;     
+    width: 60%;       
+    /* margin-top: 10%; */
+ }
+
+
+ .UpdateButton{    
+    max-width: 60%;
+    width: 60%;
+    margin: auto;
+}
+
+.title{
+    font-size: x-large;
+    margin-top:6%;
+    width: 60%;
+}
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
+}
+
+.button1{
+    
+    display: inline-block;
+}
+
+.button2{
+    display: inline-block;
+
+}
+
+
