@@ -1,5 +1,9 @@
+<<<<<<< HEAD:room-ease/src/constants/ServerRoutes.js
 // export const BASE_URL = "http://10.0.0.70:8080";
 export const BASE_URL = "https://quiet-cliffs-40319.herokuapp.com"
+=======
+export const BASE_URL = "https://quiet-cliffs-40319.herokuapp.com";
+>>>>>>> parent of 7300936f... UI Changes:src/constants/ServerRoutes.js
 
 //AUTHENTICATION URLS
 export const LOGIN_URL = BASE_URL + '/login';
