@@ -16,7 +16,7 @@ const MemberSelect = props => {
             </div>
             {props.addedUsers.map(user => {
                 return (
-                    <div key={user._id} className={classes.Container}>
+                    <div key={user._id} className={classes.SelectedUserContainer}>
                         <p>{user.userName}</p>
                         <img className={classes.Icon} src={redCross} onClick={() => props.removeFromList(user.userName)} alt="Remove" />
                     </div>

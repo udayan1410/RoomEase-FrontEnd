@@ -42,6 +42,7 @@
 
 .MemberBox{        
     box-shadow: 1px 3px 5px #ccc;
-    margin: 10px;
-    width: 150px;
+    margin: 10px;    
+    width: auto;
+    padding: 10px;   
 }

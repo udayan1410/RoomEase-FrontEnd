@@ -26,8 +26,8 @@ class CreateTask extends Component {
         error: "",
         selectedUser: "",
         timePeriod: "AM",
-        hours: "",
-        minutes: "",
+        hours: "10",
+        minutes: "00",
     }
 
 
@@ -95,8 +95,7 @@ class CreateTask extends Component {
 
     }
 
-    changedTime = (event, type) => {
-        let time = parseInt(event.target.value);
+    changedTime = (time, type) => {
         if (type === "hours") {
             this.setState({ hours: time })
         }
@@ -105,8 +104,8 @@ class CreateTask extends Component {
         }
     }
 
-    changedtimePeriod = (event) => {
-        this.setState({ timePeriod: event.target.value })
+    changedtimePeriod = (timePeriod) => {
+        this.setState({ timePeriod: timePeriod })
     }
 
     addToList = (userName) => {

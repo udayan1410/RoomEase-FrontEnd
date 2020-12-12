@@ -3,12 +3,14 @@
     
     font-size: large;
     background-color: white; 
-    width: 80vw;
-    height: 50vh;
-    margin : 20px auto;
-    
+    width: 60%; 
     /* margin-top: 10%; */
  }
+ 
+ .UpdateButton{    
+    max-width: 60%;
+    margin: auto;
+}
 
 .title{
     font-size: x-large;

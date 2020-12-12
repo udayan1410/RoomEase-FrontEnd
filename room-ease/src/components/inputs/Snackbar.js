@@ -10,7 +10,7 @@ const Snackbar = props => {
         displayClasses.push(classes.ShowSnackbar)
         setTimeout(() => {
             props.hideMessage();
-        }, 2000)
+        }, 1500)
     }
 
     return (<div className={displayClasses.join(" ")}>{message}</div>);

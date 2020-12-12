@@ -3,6 +3,7 @@ import * as classes from './createnotes.module.css';
 import Axios from 'axios';
 import { withLayout } from '../../../hoc/Layout/withLayout'
 import RegularButton from '../../../components/inputs/RegularButton';
+import TextInput from '../../../components/inputs/TextInput';
 import { NOTES_CREATION_URL } from '../../../constants/ServerRoutes';
 
 class CreateNotes extends Component {
@@ -63,16 +64,24 @@ class CreateNotes extends Component {
         return (
             <div >
                 <input value={this.state.title} placeholder="Title" onChange={this.titleChange} className={classes.title} />
-                <textarea placeholder="Type your note here.." className={classes.note} name="text area" value={this.state.note} onChange={this.handleChange}></textarea>
+                <p></p>
+                <textarea
+                    placeholder="Type your note here.."
+                    className={classes.note}
+                    name="text area"
+                    value={this.state.note}
+                    onChange={this.handleChange}
+                    rows="10"
+                >
+                </textarea>
 
                 <div className={classes.buttoncontainer}>
                     <div className={classes.button1}>
                         <p>Share with roommates:<input type="checkbox" checked={this.state.shared} onChange={this.handleSharing} /></p>
-
-                        <RegularButton onClick={this.shareNote} text="Submit"> </RegularButton>
-
                     </div>
-
+                </div>
+                <div className={classes.UpdateButton}>
+                    <RegularButton onClick={this.shareNote} text="Submit"> </RegularButton>
                 </div>
 
             </div>

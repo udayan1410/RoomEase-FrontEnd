@@ -59,7 +59,7 @@ class CreateRoom extends Component {
                 <p>Create Room</p>
                 <TextInput hint="Enter Group Name" onChange={this.roomNameChangedHandler} />
                 {errorMessage}
-                <RegularButton onClick={this.createGroupHandler} text="Create Group" disabled={this.state.buttonDisabled} />
+                <RegularButton onClick={this.createGroupHandler} text="Create Room" disabled={this.state.buttonDisabled} />
             </form>
         )
     }
